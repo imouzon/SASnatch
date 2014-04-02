@@ -10,9 +10,15 @@ setClass('SASnatch',
                         results= 'snatchResults',
                         out = 'snatch2R',   
                         log = 'character'),
-         contains = c('snatchCode','snatchResults','snatch2R','snatchLog'))
+         contains = c('snatchResults','snatch2R'))
 
-#try an example
+mySASchunk <- makeSASnatch('mySASchunk','./out/SAScache')
+
+write(file='check.tex',mySASchunk@results@TeX[[1]])
+write(file='check.tex',mySASchunk@results@TeX[[2]],append=TRUE)
+
+
+cat(mySASchunk@results@TeX[[1]])
 
 #output is two tables
    html.output <- list('this is the first HTML table', 'this is the second HTML table')
@@ -38,20 +44,86 @@ setClass('SASnatch',
                                   out = sas2r, 
                                   log = log.file)
 
-setGeneric('htmlResult', function(
-setMethod('htmlResult', function () {
-   
+#get results by integer
+snatchTeXitem = function(S4obj,output.n,print.result=TRUE){
+   if(is(snatch.Chunk,'SASnatch')){
+      res = S4obj@results@TeX[[output.n]]
+      if(print.result){
+         print(res)
+      }else{
+         return(res)
+      }
+   }else{
+      cat('Error in snatchHTML: input is not of class SASnatch\n')
+   }
 }
 
+snatchHTMLitem = function(S4obj,output.n,print.result=TRUE){
+   if(is(snatch.Chunk,'SASnatch')){
+      res = S4obj@results@HTML[[output.n]]
+      if(print.result){
+         print(res)
+      }else{
+         return(res)
+      }
+   }else{
+      cat('Error in snatchHTML: input is not of class SASnatch\n')
+   }
+}
 
-   snatch.Chunk@results@HTML[[2]]
-   snatch.Chunk@results@TeX[[2]]
+snatchHTML = function(S4obj,input_vec){
+   num_input = gsub('[^0-9.]','',input_vec)
+   num_input=num_input[which(as.integer(num_input) == as.numeric(num_input))]
 
-   snatch.Chunk@code
 
-   snatch.Chunk@log
+   if(length(num_input) > 0){
+      for(i in 1:length(num_input)){
+         snatchHTMLitem(S4obj,as.integer(num_input[i]))
+      }
+   }else{
+      for(i in 1:length(S4obj@results@HTML)){
+         snatchHTMLitem(S4obj,i)
+      }
+   }
+}
 
-   snatch.Chunk
+snatchTeX = function(S4obj,input_vec){
+   num_input = gsub('[^0-9.]','',input_vec)
+   num_input=num_input[which(as.integer(num_input) == as.numeric(num_input))]
 
-   getSlots(class(snatch.Chunk))
-   snatch.Chunk@TeX
+   cat(paste('first:', num_input[1],'\n'))
+   cat(paste('second:', num_input[2],'\n'))
+
+   if(length(num_input) > 0){
+      for(i in 1:length(num_input)){
+         snatchTeXitem(S4obj,as.integer(num_input[i]))
+      }
+   }else{
+      for(i in 1:length(S4obj@results@TeX)){
+         snatchTeXitem(S4obj,i)
+      }
+   }
+}
+
+snatchOptions=function(...){
+   input_list <- as.list(substitute(list(...)))[-1L]
+   return(input_list)
+}
+
+   
+snatchPrint=function(S4obj,...){
+   #get additional options
+   input_list <- snatchOptions(...)
+   if(length(input_list) > 0){
+   input_vec <- sapply(1:length(input_list), function(i) as.character(input_list[[i]]))
+   }else{
+      input_vec <- 'TeX'
+   }
+   
+   #was html table asked for? Use TeX by default
+   use.html <- FALSE
+   if(length(input_vec) > 0) use.html <- as.logical(sum(grepl('html',input_vec)))
+
+   if(use.html) snatchHTML(S4obj,input_vec)
+   if(!use.html) snatchTeX(S4obj,input_vec)
+}
