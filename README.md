@@ -46,8 +46,8 @@ I like this name because "natch" is slang-ish for "naturally" which is what
 I hope using it will feel like.
 
 ### Questions of Interest
--How can SAS and R share data and results in an efficient and straightforward way?
--What methods can I use so that the person actually using the package has to fuss with special features as little as possible?
+*How can SAS and R share data and results in an efficient and straightforward way?
+*What methods can I use so that the person actually using the package has to fuss with special features as little as possible?
 
 ### What data is available?
 SAS has a wonderful system for generating output (the Output Delivery System, or ODS)
