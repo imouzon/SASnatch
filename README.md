@@ -31,7 +31,7 @@ Or:
 
 Although the second method only prints the mean to the output (along with all the other SAS output).
 I can appreciate this. However, there are several pieces that may alarm others
-("keep = " but not "drop = ", using not just SQL but "proc sql", the semicolon to create the macro variable meanObs, where does "_N_" come from, and so on).
+(``keep = `` but not ``drop = ``, using not just SQL but ``proc sql``, the semicolon to create the macro variable ``meanObs`` but a ampersand to call it, where does ``_N_`` come from, and so on).
 
 Even being generally happy using SAS myself, I often wish I could do 
 one or two operations in R along the way, if not simply for the reason that 
@@ -76,6 +76,6 @@ something like
 
 to produce an S4 object containing the results and the dataset 'ballout'
 named after the chunk. 
-Either methods for that S4 object (HTMLoutput(sasBaseball), for instance)
+Either methods for that S4 object (``HTMLoutput(sasBaseball)``, for instance)
 or elbow grease (by digging into the resulting object) would give the results when placed
 in an output chunk (or perhaps and S-expression inline).
