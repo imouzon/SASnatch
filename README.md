@@ -19,19 +19,19 @@ in R we can store the mean of the top 50 observations can be found using
 In SAS this can be done in a number of ways. For instance:
 
     proc sort data = d; by obs descending; run;
-    data d2; set d(keep = obs); order = _N_; if order < 51; drop _N_; run;
+    data d2; set d(keep = obs); order = _N_; if order < 51; drop order; run;
     proc sql; select mean(obs) into :meanObs from d2; quit;
     %put &meanObs;
 
 Or:
 
     proc sort data = d; by obs descending; run;
-    data d2; set d(keep = obs); order = _N_; if order < 51; drop _N_; run;
+    data d2; set d(keep = obs); order = _N_; if order < 51; drop order; run;
     proc means data = d2; run;
 
 Although the second method only prints the mean to the output (along with all the other SAS output).
 I can appreciate this. However, there are several pieces that may alarm others
-(``keep = `` but not ``drop = ``, using not just SQL but ``proc sql``, the semicolon to create the macro variable ``meanObs`` but a ampersand to call it, where does ``_N_`` come from, and so on).
+(``keep = `` but not ``drop = ``, using not just SQL but ``proc sql``, the colon to create the macro variable ``meanObs`` but a ampersand to call it, where does ``_N_`` come from, and so on).
 
 Even being generally happy using SAS myself, I often wish I could do 
 one or two operations in R along the way, if not simply for the reason that 
