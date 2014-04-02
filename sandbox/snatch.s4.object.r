@@ -1,8 +1,17 @@
 #Two types of output, HTML and TeX
+#setClass('snatchHTML',representation(HTMLoutput = 'list'))
+#setClass('snatchTeX',representation(TeXoutput = 'list'))
+#setClass('snatchResults',representation(HTML = 'snatchHTML', TeX = 'snatchTeX'),contains = c('snatchTeX','snatchHTML'))
 setClass('snatchResults',representation(HTML = 'list', TeX = 'list'))
 
-#the results from SAS
+#the code that was used
+setClass('snatchCode',representation(code = 'character'))
+
+#the dataset that was the result
 setClass('snatch2R',representation(SAS2R = 'list'))
+
+#the log file
+setClass('snatchLog',representation(log = 'character'))
 
 #The actual snatch object
 setClass('SASnatch', 
@@ -18,11 +27,16 @@ setClass('SASnatch',
    html.output <- list('this is the first HTML table', 'this is the second HTML table')
    tex.output <- list('this is the first TeX table', 'this is the second TeX table')
 
+   #html.table <- new('snatchHTML',HTMLoutput = html.output)
+   #tex.table <- new('snatchTeX',TeXoutput = tex.output)
+
 #put the results into results S4 object
+   #results <- new('snatchResults', HTML = html.table, TeX = tex.table)
    results <- new('snatchResults', HTML = html.output, TeX = tex.output)
 
 #code is an object
    code.file = 'proc reg data = d;'
+   code <- new('snatchCode',code=code.file)
 
 #results in a dataset
    d1 <- data.frame(x=1:10,y=1:10)
@@ -31,18 +45,10 @@ setClass('SASnatch',
 
 #results from log
    log.file <- 'this is erros and stuff'
+   saslog <- new('snatchLog',log=log.file)
 
 #and this is the final SAS output
-   snatch.Chunk <- new('SASnatch',code = code.file, 
-                                  results = results, 
-                                  out = sas2r, 
-                                  log = log.file)
-
-setGeneric('htmlResult', function(
-setMethod('htmlResult', function () {
-   
-}
-
+   snatch.Chunk <- new('SASnatch',code = code.file, results = results, out = sas2r, log = log.file)
 
    snatch.Chunk@results@HTML[[2]]
    snatch.Chunk@results@TeX[[2]]
@@ -52,6 +58,3 @@ setMethod('htmlResult', function () {
    snatch.Chunk@log
 
    snatch.Chunk
-
-   getSlots(class(snatch.Chunk))
-   snatch.Chunk@TeX
