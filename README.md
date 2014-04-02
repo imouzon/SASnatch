@@ -14,20 +14,20 @@ However, using SAS is often a less than satisfying experience.
 The output can be unwieldy and small steps can be frustrating (for instance,
 in R we can store the mean of the top 50 observations can be found using
 
-//mean(d$obs[order(d$obs,decreasing=TRUE)][1:50])
+    mean(d$obs[order(d$obs,decreasing=TRUE)][1:50])
 
 In SAS this can be done in a number of ways. For instance:
 
-//proc sort data = d; by obs descending; run;
-//data d2; set d(keep = obs); order = _N_; if order < 51; drop _N_; run;
-//proc sql; select mean(obs) into :meanObs from d2; quit;
-//%put &meanObs;
+    proc sort data = d; by obs descending; run;
+    data d2; set d(keep = obs); order = _N_; if order < 51; drop _N_; run;
+    proc sql; select mean(obs) into :meanObs from d2; quit;
+    %put &meanObs;
 
 Or:
 
-//proc sort data = d; by obs descending; run;
-//data d2; set d(keep = obs); order = _N_; if order < 51; drop _N_; run;
-//proc means data = d2; run;
+    proc sort data = d; by obs descending; run;
+    data d2; set d(keep = obs); order = _N_; if order < 51; drop _N_; run;
+    proc means data = d2; run;
 
 Although the second method only prints the mean to the output (along with all the other SAS output).
 I can appreciate this. However, there are several pieces that may alarm others
@@ -66,13 +66,13 @@ and I intend to use them in the tools that pass the data back and forth.
 Ideally there would be a simple method for the user to interact with SAS through R,
 something like
 
-//<<sasBaseBall,SASnatch = TRUE, SASget = baseball, SASgive = ballout>>=
-//   proc reg data = baseball;
-//      id name team league;
-//      model logSalary = no_hits no_runs no_rbi no_bb yr_major cr_hits;
-//      output out = ballout p=logSal_hat r = logSalary_resid cookd = cookD;
-//   run;
-//@
+    <<sasBaseBall,SASnatch = TRUE, SASget = baseball, SASgive = ballout>>=
+       proc reg data = baseball;
+          id name team league;
+          model logSalary = no_hits no_runs no_rbi no_bb yr_major cr_hits;
+          output out = ballout p=logSal_hat r = logSalary_resid cookd = cookD;
+       run;
+    @
 
 to produce an S4 object containing the results and the dataset 'ballout'
 named after the chunk. 
