@@ -1,0 +1,582 @@
+
+\documentclass[10pt]{report}
+\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\newcommand{\SweaveOpts}[1]{}  % do not interfere with LaTeX
+\newcommand{\SweaveInput}[1]{} % because they are not real TeX commands
+\newcommand{\Sexpr}[1]{}       % will only be parsed by R
+
+
+
+%\tracingall % used to pin point problems in latexing a doc
+
+%%%%%%%% Packages  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{url}
+\usepackage{pdfcolmk}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{etoolbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{lstlinebgrd}
+\usepackage{extramarks}
+\usepackage{chngpage}
+\usepackage{soul,color}
+\usepackage{graphicx,float,wrapfig}
+\usepackage{amsmath,amssymb, rotating}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{animate}
+\usepackage{array}
+\usepackage{graphics, color}
+\usepackage{graphicx}
+\usepackage{epsfig}
+%\usepackage{minted}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{tikz}
+\usepackage{mdframed}
+\usetikzlibrary{backgrounds}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%% Define New Commands  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \blue{} creates blue text
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+% \red{} create red text
+\newcommand{\red}[1]{{\color{red} #1}}
+
+% \distras gives a distribution tilde
+\newcommand{\distras}[1]{%
+\savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+\savebox{\mysim}{\hbox{$\sim$}}%
+\mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%% Create New Theorems  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New theorems: 
+%     \newtheorem{name}{What gets printed in the box}[counter]
+% used by
+%     \begin{name}
+%     CONTENT GOES HERE
+%     \end{name}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{defi}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{model}{Model}[section]
+\newtheorem{condi}{Condition}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%% Mathematical Macros  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\psp}{\ensuremath{\left(\Omega,\mathcal{F},\mu\right)}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%% Envioronment Tools  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{secnumdepth}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%% Fancy Quotes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\tikzset{%
+  fancy quotes/.style={
+    text width=\fq@width pt,
+    align=justify,
+    inner sep=1em,
+    anchor=north west,
+    minimum width=\textwidth,
+  },
+  fancy quotes width/.initial={.8\textwidth},
+  fancy quotes marks/.style={
+    scale=8,
+    text=white,
+    inner sep=0pt,
+  },
+  fancy quotes opening/.style={
+    fancy quotes marks,
+  },
+  fancy quotes closing/.style={
+    fancy quotes marks,
+  },
+  fancy quotes background/.style={
+    show background rectangle,
+    inner frame xsep=0pt,
+    background rectangle/.style={
+      fill=gray!25,
+      rounded corners,
+    },
+  }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% less fancy
+%   \begin{fquote}[Author][Book][date]
+%       Here is a good quote
+%   \end{fquote}
+%
+%           Whats up dogs!         ____________________________________
+%                                   -Lawler, Introduction to Stochastic 
+
+\definecolor{lessfancyquotemark}{gray}{.7}
+\makeatletter
+\def\fquote{%
+    \@ifnextchar[{\fquote@i}{\fquote@i[]}%]
+           }%
+\def\fquote@i[#1]{%
+    \def\tempa{#1}%
+    \@ifnextchar[{\fquote@ii}{\fquote@ii[]}%]
+                 }%
+\def\fquote@ii[#1]{%
+    \def\tempb{#1}%
+    \@ifnextchar[{\fquote@iii}{\fquote@iii[]}%]
+                      }%
+\def\fquote@iii[#1]{%
+    \def\tempc{#1}%
+    \vspace{1em}%
+    \noindent%
+    \begin{list}{}{%
+         \setlength{\leftmargin}{0.1\textwidth}%
+         \setlength{\rightmargin}{0.1\textwidth}%
+                  }%
+         \item[]%
+         \begin{picture}(0,0)%
+         %\put(-15,-5){\makebox(0,0){\scalebox{3}{\textcolor{lessfancyquotemark}{``}}}}%
+         \end{picture}%
+         \begingroup\itshape}%
+
+ \def\endfquote{%
+ \endgroup\par%
+ \makebox[0pt][l]{%
+ \hspace{0.8\textwidth}%
+ \begin{picture}(0,0)(0,0)%
+ %\put(15,15){\makebox(0,0){%
+ %\scalebox{2}{\color{lessfancyquotemark}''}}}%
+ \end{picture}}%
+ \ifx\tempa\empty%
+ \else%
+    \ifx\tempc\empty%
+       \hfill\rule{100pt}{0.5pt}\\\mbox{}\hfill- \tempa,\ \emph{\tempb}%
+   \else%
+       \hfill\rule{100pt}{0.5pt}\\\mbox{}\hfill- \tempa,\ \emph{\tempb},\ \tempc%
+   \fi\fi\par%
+   \vspace{0.5em}%
+ \end{list}%
+ }%
+ \makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \begin{simplequote}[Author][Book][date]
+%       Here is a good quote
+%   \end{simplequote}
+%
+%       italicized text that wraps eventually
+%                                        -Author, Book (date)
+
+\makeatletter
+\def\simpquote{%
+    \@ifnextchar[{\simpquote@i}{\simpquote@i[]}%]
+           }%
+\def\simpquote@i[#1]{%
+    \def\tempa{#1}%
+    \@ifnextchar[{\simpquote@ii}{\simpquote@ii[]}%]
+                 }%
+\def\simpquote@ii[#1]{%
+    \def\tempb{#1}%
+    \@ifnextchar[{\simpquote@iii}{\simpquote@iii[]}%]
+                      }%
+\def\simpquote@iii[#1]{%
+    \def\tempc{#1}%
+    \vspace{0.5em}%
+    \noindent%
+    \begin{list}{}{%
+         \setlength{\leftmargin}{0.1\textwidth}%
+         \setlength{\rightmargin}{0.1\textwidth}%
+                  }%
+         \item[]%
+         \begingroup\itshape}%
+
+ \def\endsimpquote{%
+ \endgroup\par%
+ \makebox[0pt][l]{%
+ \hspace{0.8\textwidth}%
+ }%
+ \ifx\tempa\empty%
+ \else%
+    \ifx\tempc\empty%
+       \mbox{}\hfill- \tempa,\ \emph{\tempb}%
+   \else%
+       \mbox{}\hfill- \tempa,\ \emph{\tempb}\ (\tempc)%
+   \fi\fi\par%
+   \vspace{0.5em}%
+ \end{list}%
+ }%
+ \makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   \begin{stackquote}[Author][Book][date]
+%       Here is a good quote
+%   \end{stackquote}
+%
+%       italicized text that wraps eventually
+%                                        -Author, 
+%                                     Book (date)
+
+\makeatletter
+\def\stackquote{%
+    \@ifnextchar[{\stackquote@i}{\stackquote@i[]}%]
+           }%
+\def\stackquote@i[#1]{%
+    \def\tempa{#1}%
+    \@ifnextchar[{\stackquote@ii}{\stackquote@ii[]}%]
+                 }%
+\def\stackquote@ii[#1]{%
+    \def\tempb{#1}%
+    \@ifnextchar[{\stackquote@iii}{\stackquote@iii[]}%]
+                      }%
+\def\stackquote@iii[#1]{%
+    \def\tempc{#1}%
+    \vspace{0.5em}%
+    \noindent%
+    \begin{list}{}{%
+         \setlength{\leftmargin}{0.1\textwidth}%
+         \setlength{\rightmargin}{0.1\textwidth}%
+                  }%
+         \item[]%
+         \begingroup\itshape}%
+
+ \def\endstackquote{%
+ \endgroup\par%
+ \makebox[0pt][l]{%
+ \hspace{0.8\textwidth}%
+ }%
+ \ifx\tempa\empty%
+ \else%
+    \ifx\tempc\empty%
+       \mbox{}\hfill- \tempa, \\
+       \mbox{}\hfill \emph{\tempb}%
+   \else%
+       \mbox{}\hfill- \tempa, \\ 
+       \mbox{}\hfill \emph{\tempb}\ (\tempc)%
+   \fi\fi\par%
+   \vspace{0.5em}%
+ \end{list}%
+ }%
+ \makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%% Framed Theorems %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theo}{Theorem}
+\newenvironment{ftheo}
+  {\begin{mdframed}\begin{theo}}
+  {\end{theo}\end{mdframed}}
+
+\newtheorem{deffy}{Definition}
+\newenvironment{fdef}
+  {\begin{mdframed}\begin{deffy}}
+  {\end{deffy}\end{mdframed}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%% Project Specific Information %%%%%%%%%%%%%%%%%%%%%
+
+%The semester of the current project
+\def\Semester{Spring 2014} %i.e., Spring 2014
+
+% ClassShort is the abbreviation of the project or course
+% Group or course name (short) %i.e., MATH 544
+\def\GroupShort{STAT 585X}   
+\def\thistitle{Project Report: SASnatch: Using SAS Naturally}%
+\def\thistitleShort{SASnatch}%
+
+% ClassLong is the full name of the project or course
+% Group or course name (long) %i.e. Intro. to Stochastic Processes
+\def\GroupLong{Data Technologies for Statistical Analysis} 
+
+% MeetingTime is a meeting time associated with the course
+% Group or class meeting time % i.e., MWF 1:10 - 2:00
+\def\MeetingTime{MF 3:10 - 4:00, W 3:10-5:00} 
+
+% The full name of the person leading the group
+% Group leader or course instructor (long) %Dr. Alex Roitershtein
+\def\GroupLeaderLong{Dr. Diane Cook, Dr. Heike Hofmann}
+
+% The last name of the person leading the group
+% Group Leader or course instructor (short) % i.e., Roitershtein
+\def\GroupLeaderShort{Cook, Hofmann} 
+
+
+% Author Name
+\def\AuthorName{Ian Mouzon}
+\def\AuthorNameShort{Mouzon}
+\def\AuthorContact{\blue{imouzon@iastate}}
+
+% Instructions (due date, etc.)
+% i.e., Due Friday, September 19th at 1:00
+\def\theseInstructions{Due Friday April 7th at 3:10}
+
+% Assignment
+% List of problems to be assigned
+\def\Assignment{Draft of report from course project}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%% Page set up %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Note we need the following for the page header and foot:
+% \thistitle
+% \Semester
+% \GroupLong
+% \GroupShort
+% \MeetingTime
+% \GroupLeaderLong
+% \GroupLeaderShort
+% \AuthorName
+% \AuthorContact
+
+\topmargin=-0.45in      %
+\evensidemargin=0in     %
+\oddsidemargin=0in      %
+\textwidth=6.5in        %
+\textheight=9.0in       %
+\headsep=0.25in         %
+
+% Setup the header and footer
+\pagestyle{fancy}                                                       %
+\lhead{\AuthorContact}                                              %
+\lhead{\AuthorNameShort}                                                 %
+\chead{\GroupShort\ (\GroupLeaderShort\ \Semester): \thistitleShort}  %
+\rhead{\firstxmark}                                                     %
+\lfoot{\lastxmark}                                                      %
+\cfoot{}                                                                %
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}}                          %
+\renewcommand\headrulewidth{0.4pt}                                      %
+\renewcommand\footrulewidth{0.4pt}                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\ifdefempty{\definition}{
+%      Do this if definition is NOT empty
+%   }{
+%      Do this if definition is empty
+%   }
+
+\makeatletter
+\def\titleheader{
+   \thispagestyle{empty}%
+   \begin{center}%
+   \renewcommand{\arraystretch}{1.5}%
+   \begin{tabular}{c}%
+      \Large{\GroupShort: \GroupLong} \\
+      \thistitle \\
+      \Semester, \GroupLeaderLong\\
+   \end{tabular}
+   \end{center}
+
+   \begin{center}
+   \renewcommand{\arraystretch}{1.5}
+      \begin{tabular*}{0.65\textwidth}{r@{:\hspace{.3cm}}l}
+   \hline
+   Name& \AuthorName\\
+   email& \AuthorContact  \\
+   \ifdefempty{\theseInstructions}{}{Instructions&  \theseInstructions \\}
+   \ifdefempty{\Assignment}{}{Assignment& \Assignment \\}
+   \hline
+   \end{tabular*}
+   \end{center}
+}
+\makeatother
+
+
+
+\begin{document}
+% For LaTeX-Box: root = SASnatch-draft-report.tex 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File Name: SASnatch-draft-report.rnw
+%  Purpose:
+%
+%  Creation Date: 07-04-2014
+%  Last Modified: Mon Apr  7 14:03:06 2014
+%  Created By:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-- Set parent file
+
+
+
+%\renewcommand{\Semester}{Spring 2014}
+%\groupleaderinfo{group leader long}{group leader short}
+%\groupspecinfo{group short}{group long}{meeting times}
+
+
+%-- title page and quote
+\titleheader{}
+%source('~/R/randomTeXquote.r'); randomTeXquote
+
+\section{Background}
+\begin{fquote}[Bob Rodriguez][Senior Director of Statistical Development at SAS]
+R is a leading language for developing new statistical methods. [...]
+We know a lot of our users have both R and SAS in their toolkit, 
+and we decided to make it easier for them to access R by making 
+it available in the SAS environment.
+\end{fquote}
+%http://support.sas.com/rnd/app/studio/Rinterface2.html
+
+\begin{fquote}[Ashlee Vance][Bits Blog (The New York Times)][February 16, 2009]
+On several levels, R represents a threat to SAS, which is the largest seller of commercial statistics software.
+\end{fquote}
+
+The first statistical programming language I learned to use was SAS, and the 
+first few courses I used it in were made more difficult and frustrating as a result. 
+I often felt like the assignments in the course were about struggling to get SAS to give
+me the results I wanted while the exams were focused on the non-SAS concepts 
+that actual made up the material of the course, meaning a lot of my time 
+outside of class was spent unproductively. While this has very little to do with
+SAS itself, which I have since found to be a very powerful tool and one that
+is very easy to use, my experience can hardly be unique. While I have met many students
+in graduate school who are willing to tweak minute details in the \verb!R! code they have
+written, I have not met a single student who does the same in SAS: in fact, I 
+know only a few students who are willing to use SAS at all.
+
+I wind up using SAS on an almost daily basis now. 
+Still, there are many aspects of SAS that I still find frustrating,
+oftern all the more so because R does it so well (anything that
+can be accomplished in qplot, say)
+or because SAS does them in such a frustrating way (how do you find the sum of 2 and 2 in R? There are many ways, but 
+are any of them as fast and unconscious as typing \verb!2 + 2!?). 
+
+The way programming in SAS even feels different to me than programming in R.
+R feels more open, with every object being manipulatable and easy to work with,
+and when you have written good code, you feel like you have actually 
+made something yourself. Feeling like I have been creative is very personally
+rewarding and makes hours spent programming, even on minute details, enjoyable.
+I even customized my opening message in R, which is a waste of time by almost any
+criteria except one: I went from an idea (can I customize the opening message) to a result
+(I am greeted by a message \textit{that I wrote}). I created a very small something.
+With all of its \verb!proc!s and \verb!data! steps, SAS feels like almost claustrophobic, 
+and the opportunity to feel creative is harder to find. 
+Even the SAS environment feels like a box to me, with an Output window, a log window,
+a results bar, and so on. 
+
+That is, my problems with using SAS fit roughly into two categories:
+
+\begin{itemize}
+   \item There are steps that I would rather perform in R, and
+   \item SAS's workflow feels restrictive.
+\end{itemize}
+
+SAS has provided many tools that I could take advantage of (for instance, using R through SAS/IML 
+and the Output Delivery System (ODS) to control the amount of output) but
+these tools are not as convenient or simple as I would like them to be.
+\verb!knitr! on the other hand feels much more natural, leading me to work on this 
+tool: \verb!SASnatch!.
+
+\section{SASnatch: Using SAS naturally}
+Or perhaps \verb!knitr!ally. 
+The idea is simple: SAS has powerful 
+features that would be great to take advantage of but
+unfortunately lacks many perks of using R (even if the main 
+perk is merely that you find R more familiar). 
+\verb!knitr! is a great tool for creating reproducible documents but does not work with SAS.
+\verb!SASnatch! is a bridge that allows R and SAS to work together by executing SAS code 
+on R objects and returning the results to R. 
+
+\section{Usage}
+When setting options for a \verb!knitr! chunk, simply set the 
+\verb!useSAS! chunk option to \verb!TRUE! and the \verb!SASnatch! 
+option as being equal to a character vector containing the names of the objects 
+that are intended to be shared with SAS. For example:
+
+
+
+and then \verb!Snatch!ing the 
+results back to R.
+
+\end{document}

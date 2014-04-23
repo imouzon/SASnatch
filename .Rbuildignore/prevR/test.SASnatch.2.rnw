@@ -1,0 +1,91 @@
+% For LaTeX-Box: root = test.SASnatch.2.tex 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File Name: test.SASnatch.2.rnw
+%  Purpose:
+%
+%  Creation Date: 22-04-2014
+%  Last Modified: Wed Apr 23 15:13:16 2014
+%  Created By:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-- Set parent file
+<<set-parent, echo=FALSE, cache=FALSE, include = TRUE>>=
+   #need to source R macros if we use them
+   source('~/R/R.latex.macros.r')
+
+   #set up knitr
+   source('~/R/knitrSetup.r')
+   knitrSetup(rootDir=FALSE,use.tikz=TRUE)
+
+   #set up file locations
+   file.directory = getwd()
+   setwd(file.directory)
+   set_parent('~/tex/main-document.rnw')
+@
+
+\renewcommand{\Semester}{Spring 2014}
+\groupleaderinfo{STAT 585X}{STAT 585X}
+\groupspecinfo{SASnatch}{Using SAS "knitr"-ally}{}
+
+
+%-- title page and quote
+\titleheader{Testing SASnatch}
+
+
+%-- loadSASnatch: R code (Code in Document)
+<<loadSASnatch, echo=TRUE, cache=FALSE, eval=FALSE, include = TRUE>>=
+   #Need these packages
+   rm(list=ls())
+   library(devtools)
+
+   #Install SASnatch in particular
+   setwd('~/courses/stat585/SASnatch')
+   document()
+   build_vignettes()
+   check()
+   install()
+
+   #load the library
+   library(SASnatch)
+@
+
+%-- makeSASnatchHook: R code (Code in Document)
+<<makeSASnatchHook, echo=TRUE, cache=FALSE, include = TRUE>>=
+   knit_hooks$set(
+      SASnatch = function(before, options, envir){
+         if(before){
+            SAScache.directory <<- SASnatch:::makeSAScache()
+            SASnatch.dsn <<- opts_current$get('SASnatch')
+            SASnatch.code <<- opts_current$get('code')
+            SASnatch.label <<- opts_current$get('label')
+
+            SASnatch.code <<- SASnatch:::SASnatch.before(SASnatch.dsn,SASnatch.code,SASnatch.chunk_name=SASnatch.label)
+
+            SASnatch.write.sascode <<- paste('write(SASnatch.code,file="',SAScache.directory,'/',SASnatch.label,'.sas")',sep='')
+
+            eval(parse(text= SASnatch.write.sascode))
+
+            SASnatch.SASRUN <<- SASnatch:::submitSAScode(SAScache.directory=SAScache.directory,SASnatch.chunk_name=SASnatch.label)
+         }else{
+            if(SASnatch.SASRUN) cat('SASnatch ran')
+         }
+      }
+   )
+@
+
+%-- setupChunk: R code (Code in Document)
+<<setupChunk, echo=TRUE, cache=TRUE, include = TRUE>>=
+   d1 <- data.frame(x=1:10,y=1:10)
+   d2 <- data.frame(fish=c(rep('bass',5),rep('trout',5)),wts=rexp(10))
+   d3 <- data.frame(deer=c('y','y','n'),type=c('buck','doe','canine'))
+@
+
+
+<<tryThisChunk,SASnatch=c('d1, d3','d2'),echo=FALSE,eval=FALSE,warning=TRUE>>=
+  proc glm data = d1; model y = x; run;
+@
+
+%-- showmeWarnings: R code (Code in Document)
+<<showmeWarnings, echo=TRUE, cache=TRUE, include = TRUE>>=
+   warning('sthi')
+SASnatch.SASRUN
+@

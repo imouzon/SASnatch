@@ -1,0 +1,130 @@
+% For LaTeX-Box: root = SASnatch-draft-report.tex 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File Name: SASnatch-draft-report.rnw
+%  Purpose:
+%
+%  Creation Date: 07-04-2014
+%  Last Modified: Wed Apr  9 12:05:51 2014
+%  Created By:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-- Set parent file
+<<set-parent, echo=FALSE, cache=FALSE, include = TRUE>>=
+   #set up knitr
+   source('knitrSetup.r')
+   knitrSetup(rootDir=FALSE,use.tikz=TRUE)
+
+   #set up file locations
+   file.directory = getwd()
+   setwd(file.directory)
+   set_parent('~/courses/stat585/SASnatch/main-report-doc.rnw')
+@
+
+%\renewcommand{\Semester}{Spring 2014}
+%\groupleaderinfo{group leader long}{group leader short}
+%\groupspecinfo{group short}{group long}{meeting times}
+
+
+%-- title page and quote
+\titleheader{}
+%\Sexpr{source('~/R/randomTeXquote.r'); randomTeXquote}
+
+\section{Background}
+\begin{fquote}[Bob Rodriguez][Senior Director of Statistical Development at SAS]
+R is a leading language for developing new statistical methods. [...]
+We know a lot of our users have both R and SAS in their toolkit, 
+and we decided to make it easier for them to access R by making 
+it available in the SAS environment.
+\end{fquote}
+%http://support.sas.com/rnd/app/studio/Rinterface2.html
+
+\begin{fquote}[Ashlee Vance][Bits Blog (The New York Times)][February 16, 2009]
+On several levels, R represents a threat to SAS, which is the largest seller of commercial statistics software.
+\end{fquote}
+
+The first statistical programming language I learned to use was SAS, and the 
+first few courses I used it in were made more difficult and frustrating as a result. 
+I often felt like the assignments in the course were about struggling to get SAS to give
+me the results I wanted while the exams were focused on the non-SAS concepts 
+that actual made up the material of the course, meaning a lot of my time 
+outside of class was spent unproductively. While this has very little to do with
+SAS itself, which I have since found to be a very powerful tool and one that
+is very easy to use, my experience can hardly be unique. While I have met many students
+in graduate school who are willing to tweak minute details in the \verb!R! code they have
+written, I have not met a single student who does the same in SAS: in fact, I 
+know only a few students who are willing to use SAS at all.
+
+I wind up using SAS on an almost daily basis now. 
+Still, there are many aspects of SAS that I still find frustrating,
+oftern all the more so because R does it so well (anything that
+can be accomplished in qplot, say)
+or because SAS does them in such a frustrating way (how do you find the sum of 2 and 2 in R? There are many ways, but 
+are any of them as fast and unconscious as typing \verb!2 + 2!?). 
+
+The way programming in SAS even feels different to me than programming in R.
+R feels more open, with every object being manipulatable and easy to work with,
+and when you have written good code, you feel like you have actually 
+made something yourself. Feeling like I have been creative is very personally
+rewarding and makes hours spent programming, even on minute details, enjoyable.
+I even customized my opening message in R, which is a waste of time by almost any
+criteria except one: I went from an idea (can I customize the opening message) to a result
+(I am greeted by a message \textit{that I wrote}). I created a very small something.
+With all of its \verb!proc!s and \verb!data! steps, SAS feels like almost claustrophobic, 
+and the opportunity to feel creative is harder to find. 
+Even the SAS environment feels like a box to me, with an Output window, a log window,
+a results bar, and so on. 
+
+That is, my problems with using SAS fit roughly into two categories:
+
+\begin{itemize}
+   \item There are steps that I would rather perform in R, and
+   \item SAS's workflow feels restrictive.
+\end{itemize}
+
+SAS has provided many tools that I could take advantage of (for instance, using R through SAS/IML 
+and the Output Delivery System (ODS) to control the amount of output) but
+these tools are not as convenient or simple as I would like them to be.
+\verb!knitr! on the other hand feels much more natural, leading me to work on this 
+tool: \verb!SASnatch!.
+
+\section{SASnatch: Using SAS naturally}
+Or perhaps \verb!knitr!ally. 
+The idea is simple: SAS has powerful 
+features that would be great to take advantage of but
+unfortunately lacks many perks of using R (even if the main 
+perk is merely that you find R more familiar). 
+\verb!knitr! is a great tool for creating reproducible documents but does not work with SAS.
+\verb!SASnatch! is a bridge that allows R and SAS to work together by executing SAS code 
+on R objects and returning the results to R. 
+
+\section{Usage}
+When setting options for a \verb!knitr! chunk, simply set the 
+\verb!useSAS! chunk option to \verb!TRUE! and the \verb!SASnatch! 
+option as being equal to a character vector containing the names of the objects 
+that are intended to be shared with SAS. For example, the chunk
+
+\begin{verbatim}
+   <<diamondsIn, echo=TRUE, cache=TRUE, include = TRUE>>=
+      library(ggplot2)
+      d <- diamonds
+   @
+\end{verbatim}
+
+takes the diamonds dataset and stores it in the R value \verb!d!.
+
+then the chunk
+
+\begin{verbatim}
+%-- diamondsOut: R code (Code in Document)
+<<diamondsOut, SASnatch = c('d'), SAS2R = c('freqout'), echo=TRUE, cache=TRUE, include = TRUE>>=
+   proc freq data = d; table = color*table/out = freqout; run;
+@
+\end{verbatim}
+
+%-- diamondsOut: R code (Code in Document)
+<<diamondsOut, SASnatch = c('d'), SAS2R = c('freqout'), echo=TRUE, cache=TRUE, include = TRUE>>=
+   proc freq data = d; table = color*table/out = freqout; run;
+@
+
+and then \verb!Snatch!ing the 
+results back to R.
+

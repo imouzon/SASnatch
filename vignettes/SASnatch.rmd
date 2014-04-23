@@ -1,0 +1,6 @@
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Using SAS knitrally}
+-->
+SASnatch: Making R and SAS work together
+=====================

@@ -1,0 +1,11 @@
+Package: SASnatch
+Title: Using SAS naturally
+Description: This package helps SAS and R play with each other at the same time
+    in knitr
+Version: 0.1
+Author: Ian Mouzon <imouzon@iastate.edu>
+Maintainer: Ian Mouzon <imouzon@iastate.edu>
+VignetteBuilder: knitr
+Suggests:
+    knitr
+License: MIT
