@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_6) (format=pdflatex 2013.9.17)  23 APR 2014 13:57
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/MacPorts 2012_6) (format=pdflatex 2013.9.17)  23 APR 2014 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/Users/user/courses/stat585/SASnatch/test.SASnatch.2.tex
-(/Users/user/courses/stat585/SASnatch/test.SASnatch.2.tex
+**/Users/user/courses/stat585/SASnatch/.Rbuildignore/test.SASnatch.2.tex
+(/Users/user/courses/stat585/SASnatch/.Rbuildignore/test.SASnatch.2.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, cz
 ech, slovak, dutch, ukenglish, usenglishmax, basque, french, german-x-2012-05-3
@@ -755,7 +755,7 @@ My plan is to forget the whole thing and hope for the best.
 \mysim=\box48
 \c@theo=\count169
 \c@deffy=\count170
-No file test.SASnatch.2.aux.
+(./test.SASnatch.2.aux)
 \openout1 = `test.SASnatch.2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 593.
@@ -771,6 +771,7 @@ LaTeX Font Info:    ... okay on input line 593.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 593.
 LaTeX Font Info:    ... okay on input line 593.
 LaTeX Font Info:    Try loading font information for T1+lmr on input line 593.
+
 (/opt/local/share/texmf-texlive-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -921,36 +922,25 @@ Package xcolor Warning: Incompatible color definition on input line 691.
 Package xcolor Warning: Incompatible color definition on input line 697.
 
 AED: lastpage setting LastPage 
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 706.
-
-[2] (./test.SASnatch.2.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[2] (./test.SASnatch.2.aux) ) 
 Here is how much of TeX's memory you used:
  14891 strings out of 494763
- 260239 string characters out of 3171442
- 335126 words of memory out of 3000000
- 17722 multiletter control sequences out of 15000+200000
- 27601 words of font info for 40 fonts, out of 3000000 for 9000
+ 260298 string characters out of 3171442
+ 335133 words of memory out of 3000000
+ 17721 multiletter control sequences out of 15000+200000
+ 24606 words of font info for 39 fonts, out of 3000000 for 9000
  134 hyphenation exceptions out of 8191
- 56i,11n,55p,838b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/opt/local/share/texmf-texlive-dist/fonts/enc/dvips/lm/lm-ec.enc}</opt/local
-/share/texmf-texlive-dist/fonts/type1/public/lm/lmbx10.pfb></opt/local/share/te
-xmf-texlive-dist/fonts/type1/public/lm/lmr10.pfb></opt/local/share/texmf-texliv
-e-dist/fonts/type1/public/lm/lmr12.pfb></opt/local/share/texmf-texlive-dist/fon
-ts/type1/public/lm/lmtk10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/
-public/lm/lmtt10.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/lm
-/lmtti10.pfb>
-Output written on test.SASnatch.2.pdf (2 pages, 144894 bytes).
+ 56i,11n,55p,852b,256s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/opt/local/share/texmf-texlive-dist/fonts/enc/dvi
+ps/lm/lm-ec.enc}</opt/local/share/texmf-texlive-dist/fonts/type1/public/lm/lmr1
+0.pfb></opt/local/share/texmf-texlive-dist/fonts/type1/public/lm/lmr12.pfb></op
+t/local/share/texmf-texlive-dist/fonts/type1/public/lm/lmtk10.pfb></opt/local/s
+hare/texmf-texlive-dist/fonts/type1/public/lm/lmtt10.pfb></opt/local/share/texm
+f-texlive-dist/fonts/type1/public/lm/lmtti10.pfb>
+Output written on test.SASnatch.2.pdf (2 pages, 124759 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
+ 38 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 
