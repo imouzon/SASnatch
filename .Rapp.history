@@ -1,247 +1,247 @@
-snatchTexitem(S4obj,num_input[i])
-if(use.html & length(num_input) == 0){
-snatchHTMLitem(S4obj,i)
-if(!use.html & length(num_input) == 0){
-for(i in 1:length(S4obj@results@HTML)){
-snatchTeXitem(S4obj,i)
-return(use.html)
-snatchHTMLitem(snatch.Chunk,i)
-snatchPrint(snatch.Chunk)
-base::source("/tmp/r-plugin-user/Rsource-1489-lab12.rnw")
-require(plyr)
-library(reshape)
-library(reshape2)
-library(plyr)
-melt(mf,id.vars='disp',measure.vars=c('resids','fitted','disp'))
-qplot(disp ~ mpg, data = as.data.frame(mf))
-qplot(mpg,disp, data = as.data.frame(mf))
-mf.lm
-names(mf.lm)
-mf.lm$coefficients
-mf.lm$coefficients[1]
-lm(disp ~ mpg,data = as.data.frame(mf))$coefficients[2]\
-lm(disp ~ mpg,data = as.data.frame(mf))$coefficients[2]
-lm(disp ~ mpg,data = as.data.frame(mf))$coefficients[1],
-lm(disp ~ mpg,data = as.data.frame(mf))
-names(lm(disp ~ mpg,data = as.data.frame(mf)))
-lm(disp ~ mpg,data = as.data.frame(mf))$fitted.values
-geom_point(data=mf,aes(x=mpg,y=lm(disp ~ mpg,data = as.data.frame(mf))$fitted.values)
-geom_point(data=mf,aes(x=mpg,y=lm(disp ~ mpg,data = as.data.frame(mf))$fitted.values))
-geom_point(aes(x=mf$mpg,y=lm(disp ~ mpg,data = as.data.frame(mf))$fitted.values))
-geom_point(aes(x=mf$mpg,y=lm(disp ~ mpg,data = as.data.frame(mf))$fitted.values,shape=1))
-geom_point(aes(x=mf$mpg,y=lm(disp ~ mpg,data = as.data.frame(mf))$fitted.values),shape=1)
-qplot(mpg, disp, data = as.data.frame(mf))+
-intercept=lm(disp ~ mpg,data = as.data.frame(mf))$coefficients[1],
-slope=lm(disp ~ mpg,data = as.data.frame(mf))$coefficients[2]
-head(mtcars)
-al.d <- melt(as.data.frame(mf), id = 'mpg', measure.vars = c('disp','fitted','resids'))
-mf$y = mf$disp
-qplot(mpg, value, data = al.d[which(al.d$variable == 'disp'),])+
-qplot(y, value, data = al.d[which(al.d$variable == 'disp'),])
-mf.lm <- lm(disp ~ mpg, data = as.data.frame(me))
-mf.lm$fitted
-mf.lm$predicted
-mf.lm$predict
-mf.lm$resid
-d$resid  <- mf.lm$resid
-al.d <- melt(d, id = 'mpg', measure.vars = c('disp','fitted','resids'))
-head(al.d
-head(al.d)
-qplot(mpg, value, data = al.d[which(al.d$variable == 'disp'),])
-qplot(mpg, value, data = al.d[which(al.d$variable %in% c('disp','fitted')),],color=variable)
-qplot(mpg, value, data = al.d[which(al.d$variable %in% c('disp','fitted')),],color=variable,shape=variable)
-qplot(mpg, value, ylab='disp',data = al.d[which(al.d$variable %in% c('disp','fitted')),],color=variable,shape=variable)
-)+
-geom_point(aes(x=mf$mpg,y=lm(disp ~ mpg,data = as.data.frame(mf))$fitted.values),shape=1,size=.3)
-qplot(mpg, value, ylab='residual', data = al.d[which(al.d$variable %in% c('residual')),],color=variable,shape=variable) +
-geom_point(data=al.d[which(al.d$variable %in% c('residual')),],aes(x=mpg,y=value,color=variable))
-geom_point(data=al.d[which(al.d$variable == 'residual'),],aes(x=mpg,y=value,color=variable))
-al.d[which(al.d$variable == 'residual'),]
-al.d[which(al.d$variable == 'resid'),]
-al.d[which(al.d$variable == 'resids'),]
-geom_point(data=al.d[which(al.d$variable == 'resids'),],aes(x=mpg,y=value,color=variable))
-plot(disp ~ mpg,data=as.data.frame(mf))
-d <- mf
-mf.lm <- lm(disp ~ mpg, data = as.data.frame(mf))
-d$fitted <- mf.lm$fitted
-d$resids <- mf.lm$resid
-al.d <- melt(as.data.frame(d), id = 'mpg', measure.vars = c('disp','fitted','resids'))
-qplot(mpg, value, ylab='disp', data = al.d[which(al.d$variable %in% c('disp','fitted')),],color=variable,shape=variable) +
-geom_abline(
-intercept=mf.lm$coefficients[1],
-slope=mf.lm$coefficients[2]
-ggplot()+geom_point(data=al.d[which(al.d$variable == 'resids'),],aes(x=mpg,y=value,color=variable))
-melt(mf.lm,id.vars='disp',measure.vars=c('resids','fitted','disp'))
-get_points(DSD_GaussianMoving(n=100,t=33),n=9900)
-get_points
-fuck.cluster = kmeans(pd,3)$cluster
-print(qplot(x, y, color=fuck.cluster, data=pd))
-print(qplot(x, y, color=as.factor(cluster), data=pd))
-cluster = kmeans(pd,3)$cluster
-k.mn.3 = kmeans(pd,3)
-k.mn.2 = kmeans(pd,2)
-names(k.mn.3)
-k.mn.3$centers
-square(k.mn.3$centers)
-(k.mn.3$centers)^2
-row.sum((k.mn.3$centers)^2)
-?rowSum
-centers.3 <- (k.mn.3$centers)^2
-sum(centers.3[1:3,])
-sum(centers.3[,1])
-sum(centers.3[1,])
-rowSums(k.mn.3$centers)^2
-rowSums((k.mn.3$centers)^2)
-rowSums((k.mn.2$centers)^2)
-d.2 <- rowSums((k.mn.2$centers)^2)
-?k.means
-?kmeans
-library(cluster)
-?clusGap
-clusGap(as.data.frame(d), kmeans, 'firstSEmax',B=100)
-clusGap(as.data.frame(pd), kmeans, 'firstSEmax',B=100)
-clusGap(as.data.frame(pd), kmeans, 'firstSEmax',B=200)
-clusGap(as.data.frame(pd), kmeans, 'firstSEmax',B=20)
-clusGap(as.data.frame(pd), kmeans, 'firstSEmax',B=1)
-library(mclust)
-d_clust(Mclust(as.matrix(pd),G=1:20)
-d_clust <- Mclust(as.matrix(pd),G=1:20)
-d_clust
-names(d_clust)
-d_clust$z
-dim(d_clust$z)[2]
-names(clusters)
-names(clusters)$cluster
-clusters$cluster
-clusters$center
-d.3 <- rowSums((clusters$centers)^2)
-rowSums((clusters$centers)^2)
-which(cluster.center == min(cluster.center))[1]
-min(cluster.center)
-cluster.center == min(cluster.center)
-which(cluster.center == min(cluster.center))
-cluster.1 = which(cluster.center == min(cluster.center))
-clsuter.1
-cluster.A = which(cluster.center == min(cluster.center))[1]
-cluster.A
-cluster.A[1]
-cluster.A == 2
-cluster.C
-as.factor(pd$cluster.real)
-levels(pd$cluster.real)
-print(qplot(x, y, color=cluster,real, data=pd))
-cluster.C = which(cluster.center == max(cluster.center))
-pd$cluster.real = 'B'
-pd$cluster.real[which(pd$cluster == cluster.C)] = 'C'
-levels(pd$cluster.real) <- c('A','B','C')
-print(qplot(x, y, color=cluster.real, data=pd))
-cat('made plot 1\n')
-Sys.sleep(4)
-cluster.centers
-cluster.center
-clusters$centers
-clusters$centers[,1]
-geom_point(aes(x=clusters$centers[,1],y=clusters$centers[,2]))
-geom_point(data=clusters$centers,aes(x=x,y=y))
-as.data.frame(clusters$centers)
-as.data.frame(clusters$centers)$x
-qplot(x, y, color=cluster.real, data=pd)+
-Sys.sleep(2)
-file.directory = '~/courses/stat585/'
-cat('making plot 1...')
-library(plumbr)
-library(stream)
-library(ggplot2)
-abline(mf.lm)
-plot(resids ~ mpg, data = as.data.frame(mf))
-mf <- mutaframe(mtcars)
-mf.lm <- lm(disp ~ mpg,data = as.data.frame(mf))
-mf$resids <- mf.lm$residuals
-mf$fitted <- mf.lm$fitted
-par(mfrow=c(1,2))
-add_listener(mf, function(i, j) {
-plot(disp ~ mpg, data = as.data.frame(mf))
-abline(lm(disp~mpg,data=as.data.frame(mf)))
-plot(lm(disp~mpg,data=as.data.frame(mf))$residuals ~ mpg, data = as.data.frame(mf))
-abline(h=0)
-mf$disp <- mf$disp
-mf$disp <- sqrt(mf$disp)
-nrow(dsd$strm)
-animate_data(dsd, 9900,  xlim=c(-.2,1.2), ylim=c(-.2,1.2), pointInterval=300)
-d <- c(gp[1:300,1],gp[1:300,2])
-d=mutaframe(d)
-add_listener(d, function(i,j){
-pd <- data.frame('x'=d[1:300,1],'y'=d[301:600,1])
-})
-cat('Currently making plot 1...')
-?Mclust
-pd <- data.frame('x'=gp[1:300,1],'y'=gp[301:600,1])
-gp
-geom_point(data=,aes(x=x,y=y,color=cluster.real))+
-pd
-reset(dsd)
-pd <- data.frame('x'=gp[1:300,1],'y'=gp[1:300,2])
-d_clust <- Mclust(as.matrix(pd),G=1:4)
-clusters = kmeans(pd,dim(d_clust$z)[2])
-pd$cluster = as.factor(clusters$cluster)
-cluster.center <- rowSums((clusters$centers)^2)
-cluster.A = which(cluster.center == min(cluster.center))
-cluster.B = which(cluster.center == max(cluster.center))
-pd$cluster.real = 'C'
-pd$cluster.real[which(pd$cluster == cluster.A)] = 'A'
-pd$cluster.real[which(pd$cluster == cluster.B)] = 'B'
-pd$cluster.real <- as.factor(pd$cluster.real)
-print(
-ggplot()+
-geom_point(data=pd,aes(x=x,y=y,color=cluster.real))+
-geom_point(data=as.data.frame(clusters$centers),aes(x=x,y=y))
-)
-for(i in 2:33){
-dsd <- DSD_GaussianMoving(n=100,t=33)
-for(1 in 2:33){
-runPlots <- function (dsd) {
-reset_stream(dsd)
-for(i in 1:33){
-gp <- get_points(dsd,300)
-d[1] <- c(gp[1:300,1],gp[1:300,2])
-Sys.sleep(1)
-}
-runPlots(dsd)
-base::source("/tmp/r-plugin-user/Rsource-5317-lab12.rnw")
-library(RMySQL)
-dsn = c('d1','d2')
-library(roxygen2)
-library(R2WinBUGS)
-unlist(strsplit(' ',dsn))
-?strsplit
-dsn = 'd1 d2'
-unlist(strsplit(dsn,' '))
-?write.csv
-EXPORT.TEMPLATE = 'write.csv(R-DATASET,file=\'R-WORKINGDIR/out/SAScache/DATASET-FROM-R.csv\',row.names=FALSE,na=\'\')'
-dsn='d1 d2'
-dsn='d1, d2'
-dsn=gsub(',','',dsn)
-dsn=unlist(strsplit(dsn,' '))
-dsn
-EXPORT.TEMPLATE = 'write.csv(R-DATASET,file=\'R-WORKINGDIR/out/SAScache/DATASET-FROM-R.csv\',row.names=FALSE,na=\'\');'
-EXPORT.TEMPLATE = 'write.csv(DATASET-FROM-R,file=\'R-WORKINGDIR/out/SAScache/DATASET-FROM-R.csv\',row.names=FALSE,na=\'\');'
-EXPORT.TEMPLATE = gsub('R-WORKINGDIR',getwd(),EXPORT.TEMPLATE)
-EXPORT.TEMPLATE
-gsub('DATASET-FROM-R',dsn,EXPORT.TEMPLATE)
-sapply(1:length(dsn), gsub('DATASET-FROM-R',dsn[i],EXPORT.TEMPLATE))
-sapply(1:length(dsn), function(i) gsub('DATASET-FROM-R',dsn[i],EXPORT.TEMPLATE))
-paste(sapply(1:length(dsn), function(i) gsub('DATASET-FROM-R',dsn[i],EXPORT.TEMPLATE)),collapse=' ')
-EXPORT.COMMAND = paste(sapply(1:length(dsn), function(i) gsub('DATASET-FROM-R',dsn[i],EXPORT.TEMPLATE)),collapse=' ')
-IMPORT.TEMPLATE = 'proc import datafile = R-WORKINGDIR/out/SAScache/DATASET-FROM-R.csv dbms = CSV REPLACE; getnames = YES; run;'
-IMPORT.TEMPLATE = gsub('R-WORKINGDIR',getwd(),IMPORT.TEMPLATE)
-IMPORT.COMMAND = paste(sapply(1:length(dsn), function(i) gsub('DATASET-FROM-R',dsn[i],IMPORT.TEMPLATE)),collapse=' ')
-IMPORT.COMMAND
-install()
-library(SASnatch)
+d1 <- data.frame('x'=1:10,'y'=c(rep('cat',5),rep('dog',5)))
+d2 <- data.frame('t'=1:10,'y'=rnorm(10))
+d2[4,1] <- NA
+d3 <- data.frame('types'=c('cow','fish','animal'),wt=c(1000,1000,4))
+d4 <- data.frame('types'=c('cow','','animal'),wt=c(1000,1000,4))
+base::source("/tmp/r-plugin-user/Rsource-404-SASnatch.hooks.r")
+dsn = c('d1 d2','d2,d3,d4,d5')
+SASnatch.chunk_name='chunk1'
+SASnatch.before(dsn,SASnatch.chunk_name='SASnatch')
+d1
+d5
+makeSAScache('~/courses/stat585/SASnatch/sandbox/fake_project3')
+makeSAScache()
+paste('SASnatch.',SASnatch.chunk_name,' <<- read.SASnatch.object("',SASnatch.chunk_name,'")',sep='')
+return(Snatchy)
+text=paste('SASnatch.',SASnatch.chunk_name,' <<- read.SASnatch.object("',SASnatch.chunk_name,'")',sep='')
+SASnatch.chunk_name='SASnatch-chunk-name'
+eval(parse(text = paste('SASnatch.',SASnatch.chunk_name,' <<- read.SASnatch.object("',SASnatch.chunk_name,'")',sep='')))
 helloSnatch('... hopefully')
 system('rm -rf ~/courses/stat585/SASnatch/sandbox/fake_project3')
 system('mkdir ~/courses/stat585/SASnatch/sandbox/fake_project3')
-makeSAScache('~/courses/stat585/SASnatch/sandbox/fake_project3')
+html.output <- list('this is the first HTML table', 'this is the second HTML table')
+tex.output <- list('this is the first TeX table', 'this is the second TeX table')
+results <- new('snatchResults', HTML = html.output, TeX = tex.output)
+code.file = 'proc reg data = d;'
+output2R <- new('snatchOutput',SAS2R=list(d1,d2))
+log.file <- 'this is erros and stuff'
+snatch.Chunk <- new('SASnatch',code = code.file, results = results, out = output2R, log = log.file)
+snatch.Chunk@results@HTML[[2]]
+snatch.Chunk@results@TeX[[2]]
+snatch.Chunk@code
+snatch.Chunk@out
+snatch.Chunk@log
+snatch.Chunk
+getwd()
+SAScache.directory <- makeSAScache('~/courses/stat585/SASnatch/sandbox/fake_project3'))
+SAScache.directory <- makeSAScache('~/courses/stat585/SASnatch/sandbox/fake_project3')
+write('this is the first HTML table from chunk 1',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-1.html')
+write('this is the second HTML table from chunk 1\nIt has two lines',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-2.html')
+write('this is the first TeX table from chunk 1',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-1.tex')
+write('this is the second TeX table from chunk 1\nIt has two lines',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-2.tex')
+write('this is the first HTML table from chunk 2',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2-1.html')
+write('this is the second HTML table from chunk 2',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2-2.html')
+write('this is the first TeX table from chunk 2',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2-1.tex')
+write('this is the second TeX table from chunk 2\n\nIt skips\n\nand\n\nskips',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2-2.tex')
+write('proc reg data = d;',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1.sas')
+write('proc SAS data = other_d;',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2.sas')
+write.csv(d1,row.names=FALSE,file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-d1.csv')
+write.csv(d2,row.names=FALSE,file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-d2.csv')
+write.csv(d3,row.names=FALSE,file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2-d3.csv')
+write.csv(d1,row.names=FALSE,na='',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-d1.csv')
+write.csv(d2,row.names=FALSE,na='',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1-d2.csv')
+write.csv(d3,row.names=FALSE,na='',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2-d3.csv')
+write('this is erros and stuff',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk1.log')
+write('there were another erros',file='~/courses/stat585/SASnatch/sandbox/fake_project3/out/SAScache/untitled-SAS-chunk2.log')
+fake.working.dir <- '~/courses/stat585/SASnatch/sandbox/fake_project3'
+setwd(fake.working.dir)
+read.SASnatch.object<- function (chunk.name='',working.directory='',SAS2R.names='',SAS2R.type='csv') {
+files <- list.files(path=SAScache.directory)
+files <- files[grepl(chunk.name,files)]
+html.files <- paste(SAScache.directory,files[grepl('.html',files)],sep='/')
+html.results <- lapply(1:length(html.files),function(i) paste(scan(file=html.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
+tex.files <- paste(SAScache.directory,files[grepl('.tex',files)],sep='/')
+tex.results <- lapply(1:length(tex.files),function(i) paste(scan(file=tex.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
+SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results)
+code.files <- paste(SAScache.directory,files[grepl('.sas',files)],sep='/')
+code.file <- paste(scan(file=code.files,sep='\n',what='character',quiet=TRUE),collapse='\n')
+output.files.short <- files[sapply(1:length(files),function(j) sum(sapply(1:length(SAS2R.names),function(i) grepl(SAS2R.names[i],files[j]))))  > 0]
+output.files.short <- files[grepl(SAS2R.type,files)]
+output.files <- paste(SAScache.directory,output.files.short,sep='/')
+output.sets <- lapply(1:length(output.files), function(i) read.csv(file=output.files[i]))
+if(length(SAS2R.names) > 1 | SAS2R.names[1] != ''){
+names(output.sets) <- SAS2R.names
+output2R <- new('snatchOutput',SAS2R=output.sets)
+log.files <- paste(SAScache.directory,files[grepl('.log',files)],sep='/')
+log.file <- paste(scan(file=log.files,sep='\n',what='character',quiet=TRUE),sep='\n')
+SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
+SASnatch.object
+return(SASnatch.object)
+Snatchy2 <- read.SASnatch.object('untitled-SAS-chunk2',SAS2R.names='d3')
+Snatch2
+Snatchy2
+Snatchy <- read.SASnatch.object('untitled-SAS-chunk1')
+Snatchy <- read.SASnatch.object('untitled-SAS-chunk1',SAS2R.names=c('d1','d2'))
+Snatchy
+SASnatch.after = function(SASnatch.chunk_name='SASnatch-chunk-name'){
+SAStoR.4 <- paste(sapply(1:length(SAStoR.1),function(i) gsub('DATASET_TO_GIVE_TO_R',SAStoR.1[i],SAStoR.READ.CODE.TEMPLATE)),collapse='; ')
+eval(parse(text=SAStoR.4))
+eval(parse(text = paste(SASnatch.chunk_name,' <<- read.SASnatch.object("',SASnatch.chunk_name,'",SAS2R.names=SAStoR.1)',sep='')))
+SASnatch.after(SASnatch.chunk_name='untitled-SAS-chunk2')
+knitr:::opts_current$get()
+knitr:::opts$get()
+library(ggplot2)
+data(diamonds)
+head(diamonds)
+x <- 3
+is(x < 4)
+(x < 4)
+x <- c(3,2,11,1)
+1*(x < 4)
+sum(1*(x < 4))
+nrow(diamonds)
+diamonds$x
+diamonds$x > -100
+2*(diamonds$x > -100)
+1*(diamonds$x > -100)
+sum(1*(diamonds$x > -100))
+mean(diamonds$x)
+qplot()
+qplot
+sum
+sum <- function(){cat('dog')}
+sum()
+sum(1+2)
+sum(c(1,2,))
+sum(c(1,2))
+x <- 4
+x <- 1
+qplot <- function(){cat('dog')}
+SASnatch::helloSnatch('... hopefully')
+paste(opts_chunk$get())
+?write
+SASnatch.chunk_name
+unique(unlist(strsplit(gsub('\\s*,\\s*',' ',RtoSAS.0),' ')))
+sapply(1:length(RtoSAS.1),function(i) gsub('DATASET_TO_GIVE_TO_SAS',RtoSAS.1[i],RtoSAS.WRITE.CODE.TEMPLATE))
+RtoSAS.3
+RtoSAS.4
+opts_current$get('label')
+if(!is.null(opts_current$get('label')){
+addSASheader <- function(working.directory='',chunk.name=''){
+SAScode.HEADER.1.TEMPLATE = gsub('unlabeled-SASnatch-chunk',SASnatch-chunk-name, SAScode.HEADER.1.TEMPLATE)
+SAScode.HEADER.2.TEMPLATE = gsub('unlabeled-SASnatch-chunk',SASnatch-chunk-name, SAScode.HEADER.2.TEMPLATE)
+SAScode.HEADER.1.TEMPLATE = gsub(opts_current$get('label'),SASnatch-chunk-name, SAScode.HEADER.1.TEMPLATE)
+SAScode.HEADER.2.TEMPLATE = gsub(opts_current$get('label'),SASnatch-chunk-name, SAScode.HEADER.2.TEMPLATE)
+SAScode.HEADER.1.TEMPLATE = gsub(missing.chunk.name,SASnatch-chunk-name, SAScode.HEADER.1.TEMPLATE)
+SAScode.HEADER.2.TEMPLATE = gsub(missing.chunk.name,SASnatch-chunk-name, SAScode.HEADER.2.TEMPLATE)
+addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASnatch-chunk'){
+SAScode.HEADER.0.TEMPLATE = 'ods noproctitle; title;'
+SAScode.HEADER.1.TEMPLATE = 'ods html body = "SASCACHE/SASnatch-chunk-name.html" NEWFILE = OUTPUT;'
+SAScode.HEADER.2.TEMPLATE = 'ods tagsets.tablesonlylatex file="SASCACHE/SASnatch-chunk-name.tex" (notop nobot) NEWFILE = table;'
+SAScode.HEADER.0.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.0.TEMPLATE)
+SAScode.HEADER.1.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.1.TEMPLATE)
+SAScode.HEADER.2.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.2.TEMPLATE)
+if(!is.null(opts_current$get('label'))){
+SAScode.HEADER.1.TEMPLATE = gsub(opts_current$get('label'),'SASnatch-chunk-name', SAScode.HEADER.1.TEMPLATE)
+SAScode.HEADER.2.TEMPLATE = gsub(opts_current$get('label'),'SASnatch-chunk-name', SAScode.HEADER.2.TEMPLATE)
+SAScode.HEADER.1.TEMPLATE = gsub(missing.chunk.name,'SASnatch-chunk-name', SAScode.HEADER.1.TEMPLATE)
+SAScode.HEADER.2.TEMPLATE = gsub(missing.chunk.name,'SASnatch-chunk-name', SAScode.HEADER.2.TEMPLATE)
+return(paste(SAScode.HEADER.0.TEMPLATE, SAScode.HEADER.1.TEMPLATE, SAScode.HEADER.2.TEMPLATE,sep='\n\n'))
+addSASheader('Y:/hello')
+return(RtoSAS.3)
+SAStoR.WRITE.FILE.TEMPLATE <- 'write(ObjectWithDataWritingCode,file="SASCACHE/SASnatch-chunk-name.write.data.sas")'
+SAStoR.WRITE.FILE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,SAStoR.WRITE.FILE.TEMPLATE)
+SAStoR.WRITE.FILE.TEMPLATE <- gsub('SASnatch-chunk-name',SASnatch.chunk_name,SAStoR.WRITE.FILE.TEMPLATE)
+SASnatch.before(dsn,'hola',SASnatch.chunk_name)
+cat(SASnatch.before(dsn,'hola',SASnatch.chunk_name))
+SAStoR.0
+SAStoR.WRITE.FILE.TEMPLATE <- gsub('ObjectWithDataWritingCode','SAStoR.3',SAStoR.WRITE.FILE.TEMPLATE)
+SAStoR.3
+SAStoR.WRITE.FILE.TEMPLATE
+paste(RtoSAS.6,SAStoR.3,sep='\n\n')
+SASnatch.before = function(dsn,SASnatch.code,SASnatch.chunk_name='SASnatch'){
+RtoSAS.WRITE.CODE.TEMPLATE <- 'write.csv(DATASET_TO_GIVE_TO_SAS,"SASCACHE/DATASET_TO_GIVE_TO_SAS.csv",na="",row.names=FALSE)'
+RtoSAS.READ.CODE.TEMPLATE <- 'proc import datafile = "SASCACHE/DATASET_TO_GIVE_TO_SAS.csv" out = DATASET_TO_GIVE_TO_SAS dbms = CSV replace; getnames = yes; run;'
+RtoSAS.READ.FILE.TEMPLATE <- 'write(ObjectWithDataLoadingCode,file="SASCACHE/SASnatch-chunk-name.read.data.sas")'
+SAScache.directory <- makeSAScache()
+RtoSAS.WRITE.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,RtoSAS.WRITE.CODE.TEMPLATE)
+RtoSAS.READ.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,RtoSAS.READ.CODE.TEMPLATE)
+RtoSAS.READ.FILE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,RtoSAS.READ.FILE.TEMPLATE)
+RtoSAS.READ.FILE.TEMPLATE <- gsub('SASnatch-chunk-name',SASnatch.chunk_name,RtoSAS.READ.FILE.TEMPLATE)
+SAStoR.WRITE.CODE.TEMPLATE = 'proc export data = DATASET_TO_GIVE_TO_R outfile = "SASCACHE/DATASET_TO_GIVE_TO_R.csv" dbms = csv replace; run;'
+SAStoR.READ.CODE.TEMPLATE <- 'DATASET_TO_GIVE_TO_R <<- read.csv("SASCACHE/DATASET_TO_GIVE_TO_R.csv")'
+SAStoR.WRITE.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,SAStoR.WRITE.CODE.TEMPLATE)
+SAStoR.READ.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,SAStoR.READ.CODE.TEMPLATE)
+RtoSAS.0 <- dsn[1]
+if(RtoSAS.0[1] != '' & !is.null(RtoSAS.0) & !is.logical(RtoSAS.0)){
+RtoSAS.1 <- unique(unlist(strsplit(gsub('\\s*,\\s*',' ',RtoSAS.0),' ')))
+RtoSAS.2 <- sapply(1:length(RtoSAS.1),function(i) gsub('DATASET_TO_GIVE_TO_SAS',RtoSAS.1[i],RtoSAS.WRITE.CODE.TEMPLATE))
+RtoSAS.3 <- paste(RtoSAS.2,collapse='; ')
+RtoSAS.4 <- sapply(1:length(RtoSAS.1),function(i) gsub('DATASET_TO_GIVE_TO_SAS',RtoSAS.1[i],RtoSAS.READ.CODE.TEMPLATE))
+RtoSAS.5 <- paste(RtoSAS.4,collapse='\n\n')
+RtoSAS.3 <- ''
+eval(parse(text = RtoSAS.3))
+RtoSAS.6 <- paste(RtoSAS.5,SASnatch.code,sep='\n\n')
+SAStoR.0 <- dsn[2]
+if(SAStoR.0[1] != '' & !is.null(SAStoR.0) & !is.logical(SAStoR.0) & !is.na(SAStoR.0)){
+SAStoR.1 <- unique(unlist(strsplit(gsub('\\s*,\\s*',' ',SAStoR.0),' ')))
+SAStoR.2 <- sapply(1:length(SAStoR.1),function(i) gsub('DATASET_TO_GIVE_TO_R',SAStoR.1[i],SAStoR.WRITE.CODE.TEMPLATE))
+SAStoR.3 <- paste(SAStoR.2,collapse='\n\n')
+SAStoR.3 <- ''
+SASnatch.SASfile <- paste(RtoSAS.6,SAStoR.3,sep='\n\n')
+return(SASnatch.SASfile)
+SASnatch.before = function(dsn,'Hola',SASnatch.chunk_name='SASnatch'){
+SASnatch.before(dsn,'Hola',SASnatch.chunk_name='SASnatch'){
+SASnatch.before(dsn,'Hola',SASnatch.chunk_name='SASnatch')
+base::source("/tmp/r-plugin-user/Rsource-404-SASnatch.before.r")
+base::source("/tmp/r-plugin-user/Rsource-404-addSASfooter.r")
+base::source("/tmp/r-plugin-user/Rsource-404-addSASheader.r")
+dsn <- c('d1 d2','d3 d4')
+SASnatch.chunk_name = 'hello_snatch'
+cat(SASnatch.before(dsn,'Hola',SASnatch.chunk_name='SASnatch'))
+source('~/R/R.latex.macros.r')
+source('~/R/knitrSetup.r')
+knitrSetup(rootDir=FALSE,use.tikz=TRUE)
+file.directory = getwd()
+setwd(file.directory)
+set_parent('~/tex/main-document.rnw')
+knit_hooks$set(
+SASnatch = function(before, options, envir){
+if(before){
+SAScache.directory <<- SASnatch:::makeSAScache()
+SASnatch.dsn <<- opts_current$get('SASnatch')
+SASnatch.code <<- opts_current$get('code')
+SASnatch.label <<- opts_current$get('label')
+SASnatch.code <<- SASnatch:::SASnatch.before(SASnatch.dsn,SASnatch.code,SASnatch.chunk_name=SASnatch.label)
+SASnatch.write.sascode <<- paste('write(SASnatch.code,file="',SAScache.directory,'/',SASnatch.label,'.sas")',sep='')
+eval(parse(text= SASnatch.write.sascode))
+)
+d1 <- data.frame(x=1:10,y=1:10)
+d2 <- data.frame(fish=c(rep('bass',5),rep('trout',5)),wts=rexp(10))
+d3 <- data.frame(deer=c('y','y','n'),type=c('buck','doe','canine'))
+proc glm data = d1; model y = x; run;
+message('Where the fuck is your SAS @?')
+warning('shit')
+warning('The value of path_to_SAS.exe has not been set; because of this, the SAS code will not execute')
+SAS.submit.TEMPLATE = 'PATHTOSASEXE\\SAS.EXE -SYSIN'
+submitSAScode<- function(SAScache.directory=NULL,path_to_SAS.exe=NULL,SASnatch.chunk_name='SASnatch'){
+SAS.submit.TEMPLATE = 'PATHTOSASEXE/SAS.EXE -SYSIN SASCACHE/SASnatch-chunk-name.sas'
+SAS.submit.TEMPLATE = gsub('SASCACHE',SAScache.directory,SAS.submit.TEMPLATE)
+SAS.submit.TEMPLATE <- gsub('SASCACHE',SAScache.directory,SAS.submit.TEMPLATE)
+if(is.null(path_to_SAS.exe)){
+return(FALSE)
+}else{
+SAS.submit.TEMPLATE = gsub('PATHTOSASEXE',path_to_SAS.exe,SAS.submit.TEMPLATE)
+cat(SAS.submit.TEMPLATE)
+return(TRUE)
+}
+base::source("/tmp/r-plugin-user/Rsource-14423-test.SASnatch.2.rnw")
+install()
+SAScache.directory <- 'dogs'
+SAS.submit.TEMPLATE.0 = 'PATHTOSASEXE/SAS.EXE -SYSIN SASCACHE/SASnatch-chunk-name.sas'
+SAS.submit.TEMPLATE.1 = gsub('SASCACHE',SAScache.directory,SAS.submit.TEMPLATE.0)
+library(SASnatch)
+base::source("/tmp/r-plugin-user/Rsource-20898-test.SASnatch.2.rnw")
 rm(list=ls())
 library(devtools)
 setwd('~/courses/stat585/SASnatch')

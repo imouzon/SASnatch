@@ -1,1 +1,0 @@
-proc reg data = d;
