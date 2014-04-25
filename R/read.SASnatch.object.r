@@ -24,7 +24,8 @@ read.SASnatch.object<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
    tex.results <- lapply(1:length(tex.files),function(i) paste(scan(file=tex.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
 
    #make new snatchResults S4 object
-   SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results)
+   #SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results)
+   SASnatch.results <- list('HTML' = html.results,'TeX' = tex.results)
 
    #get .sas files
    code.files <- paste(SAScache.directory,files[grepl('.sas',files)],sep='/')
@@ -44,13 +45,14 @@ read.SASnatch.object<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
    #   names(output.sets) <- SAS2R.names
    #}
    #output2R <- new('snatchOutput',SAS2R=output.sets)
-   output2R <- new('snatchOutput',SAS2R=NULL)
+   output2R <- output.sets
 
    #log files imported into R
    #log.files <- paste(SAScache.directory,files[grepl('.log',files)],sep='/')
    #log.file <- paste(scan(file=log.files,sep='\n',what='character',quiet=TRUE),sep='\n')
    log.file <- ''
 
-   SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
+   #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
+   SASnatch.object <- list('code'=code.file, 'results' = SASnatch.results, 'out' = output2R, 'log' = log.file)
    return(SASnatch.object)
 }
