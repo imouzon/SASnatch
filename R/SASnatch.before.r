@@ -58,7 +58,6 @@ SASnatch.before = function(dsn,SASnatch.code,SASnatch.chunk_name='SASnatch'){
    eval(parse(text = RtoSAS.3))
 
    #Add the ODS statements to the SAS code from the chunk
-
    RtoSAS.6 <- paste(RtoSAS.5,SASnatch.code,sep='\n\n')
 
    #which data sets are we copying for R to use
