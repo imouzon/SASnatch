@@ -24,9 +24,9 @@ read.SASnatch.object<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
    tex.results <- lapply(1:length(tex.files),function(i) paste(scan(file=tex.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
 
    ##make new snatchResults S4 object
-   #SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results)
+   SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results)
 
-   return(tex.results)
+   return(SASnatch.results)
 
    ##get .sas files
    #code.files <- paste(SAScache.directory,files[grepl('.sas',files)],sep='/')
