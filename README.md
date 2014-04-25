@@ -16,7 +16,7 @@ in R we can store the mean of the top 50 observations can be found using
 
     mean(d$obs[order(d$obs,decreasing=TRUE)][1:50])
 
-In SAS this can be done in a number of ways.[^1] For instance:
+In SAS this can be done in a number of ways.<sup>1</sup> For instance:
 
     proc sort data = d; by obs descending; run;
     data d2; set d(keep = obs); order = _N_; if order < 51; drop order; run;
@@ -82,4 +82,5 @@ Either methods for that S4 object (``HTMLoutput(sasBaseball)``, for instance)
 or elbow grease (by digging into the resulting object) would give the results when placed
 in an output chunk (or perhaps and S-expression inline).
 
-[^1]: These would actually be the examples I would use.
+**Footnotes**
+1. These would actually be the examples I would use and probably the most effecient ones I have found. There is surely a simpler bit of code that could accomplish this task, but part of the reason I find this pacakge useful is that in addition to avoiding ungainly code, I can make up for blind spots in one language or the other as well.
