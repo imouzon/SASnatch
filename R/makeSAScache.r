@@ -5,9 +5,9 @@
 #' @examples
 #' makeSAScache('~/courses/stat585/lab1/')
 
-makeSAScache <- function(SASnatch.working.directory=NULL){
+makeSAScache <- function(SASnatch.working.directory=''){
    #Get the cache pathe in R
-   if(!is.null(SASnatch.working.directory)){
+   if(!(SASnatch.working.directory=='')){
       SASnatch.R.cache.path = paste(SASnatch.working.directory,'out/cache',sep='/')
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){

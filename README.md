@@ -30,12 +30,11 @@ Or:
     proc means data = d2; run;
 
 Although the second method only prints the mean to the output (along with all the other SAS output).
-I can appreciate this. 
 However, there are several pieces that may alarm others 
-that haven't found themselves needing to do so a thing in SAS
+that haven't found themselves needing to do this kind of thing in SAS before
 (``keep = `` but not ``drop = ``, using not just SQL but ``proc sql``, the colon to create the macro variable ``meanObs`` but a ampersand to call it, where does ``_N_`` come from, and so on).
 
-Even being generally happy using SAS myself, I often wish I could do 
+Even being generally happy using just SAS, I often wish I could do 
 one or two operations in R along the way, if not simply for the reason that 
 I find them simpler, then for the reason that others can better understand them.
 This feeling arises most frequently when I want to create a final, professional looking
