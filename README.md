@@ -63,23 +63,62 @@ available to SAS, and which objects need to be taken back from SAS and given to 
 Databases can be accessed by both SAS and R (with the proper packages installed)
 and I intend to use them in the tools that pass the data back and forth.
 
-### How is the data to be collected, collated, merged, and processed.
-Ideally there would be a simple method for the user to interact with SAS through R,
-something like
+### Using SASnatch
+SAS natch is available of github and can be installed using the ``devtools`` package
+in R, as follows:
 
-    <<sasBaseBall,SASnatch = TRUE, SASget = baseball, SASgive = ballout>>=
-       proc reg data = baseball;
-          id name team league;
-          model logSalary = no_hits no_runs no_rbi no_bb yr_major cr_hits;
-          output out = ballout p=logSal_hat r = logSalary_resid cookd = cookD;
-       run;
+    require('devtools')
+    install_github('SASnatch','imouzon',arg='-l U://Documents/R/win-library/3.0')
+
+In an .rnw file, include the following two packages:
+
+    <<require-packages, cache=FALSE, message=FALSE, include = TRUE>>=
+    require('devtools')
+       require('knitr')
+       require('SASnatch')
     @
 
-to produce an S4 object containing the results and the dataset 'ballout'
-named after the chunk. 
-Either methods for that S4 object (``HTMLoutput(sasBaseball)``, for instance)
-or elbow grease (by digging into the resulting object) would give the results when placed
-in an output chunk (or perhaps and S-expression inline).
+and add the following chunk:
+
+    <<SASnatch-settings, cache=FALSE, message=FALSE, include = TRUE>>=
+       path_to_SAS.EXE <<- '"C:/Program Files/SASHome/SASFoundation/9.3/sas.exe"'
+       knit_hooks$set(SASnatch = SASnatch_hook)
+    @
+
+To send a chunk to SAS for completion, add ``SAScache = c(INPUT_DATA, OUTPUT_DATA)`` where
+``INPUT_DATA`` and ``OUTPUT_DATA`` are both characters with all input datasets and output datasets
+separated by spaces (or commas).
+
+At this point you are ready to use SASnatch.
+
+A brief example
+---------------
+
+Consider the following dataset:
+
+    <<setupChunk, echo=TRUE, cache=TRUE, include = TRUE>>=
+       d.1 <- data.frame(x=1:100,y=.3+.2*(1:100)+rnorm(100,0,3),group=rep('A',100))
+       d.2 <- data.frame(x=1:100,y=.1+.5*(1:100)+rnorm(100,0,3),group=rep('B',100))
+       d <- rbind(d.1,d.2)
+    @
+
+We can plot these datasets simply enough
+
+    <<plotchunk, fig.width=5, fig.height=5, out.width='.5\maxwidth', echo=TRUE>>=
+        require(ggplot2)
+        qplot(x,y,data = d,shape=group)
+    @
+
+Which can be run in SAS using the following:
+
+    <<SASgroupreg, SASnatch = c('d','regd_out'), eval=FALSE, echo=FALSE, cache=FALSE>>=
+       proc reg data = d; by group; model y = x; output out = regd_out p = yhat r = resid; run;
+    @
+
+The output dataset regd_out is stored in the folder ``cache/out/SAScache`` 
+where ``cache`` is the knitr cache directory,
+and HTML tables and TeX tables of the results are stored in the folder, 
+named after the chunk 
 
 **Footnotes**
 1. These would actually be the examples I would use and probably the most effecient ones I have found. There is surely a simpler bit of code that could accomplish this task, but part of the reason I find this pacakge useful is that in addition to avoiding ungainly code, I can make up for blind spots in one language or the other as well.
