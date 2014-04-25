@@ -20,11 +20,11 @@ addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASn
    SAScode.HEADER.2.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.2.TEMPLATE)
 
    if(!is.null(knitr:::opts_current$get('label'))){
-      SAScode.HEADER.1.TEMPLATE = gsub(knitr:::opts_current$get('label'),'SASnatch-chunk-name', SAScode.HEADER.1.TEMPLATE)
-      SAScode.HEADER.2.TEMPLATE = gsub(knitr:::opts_current$get('label'),'SASnatch-chunk-name', SAScode.HEADER.2.TEMPLATE)
+      SAScode.HEADER.1.TEMPLATE = gsub('SASnatch-chunk-name',knitr:::opts_current$get('label'),SAScode.HEADER.1.TEMPLATE)
+      SAScode.HEADER.2.TEMPLATE = gsub('SASnatch-chunk-name',knitr:::opts_current$get('label'),SAScode.HEADER.2.TEMPLATE)
    }else{
-      SAScode.HEADER.1.TEMPLATE = gsub(missing.chunk.name,'SASnatch-chunk-name', SAScode.HEADER.1.TEMPLATE)
-      SAScode.HEADER.2.TEMPLATE = gsub(missing.chunk.name,'SASnatch-chunk-name', SAScode.HEADER.2.TEMPLATE)
+      SAScode.HEADER.1.TEMPLATE = gsub('SASnatch-chunk-name',missing.chunk.name,SAScode.HEADER.1.TEMPLATE)
+      SAScode.HEADER.2.TEMPLATE = gsub('SASnatch-chunk-name',missing.chunk.name,SAScode.HEADER.2.TEMPLATE)
    }
    return(paste(SAScode.HEADER.0.TEMPLATE, SAScode.HEADER.1.TEMPLATE, SAScode.HEADER.2.TEMPLATE,sep='\n\n'))
 }
