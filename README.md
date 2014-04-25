@@ -16,7 +16,7 @@ in R we can store the mean of the top 50 observations can be found using
 
     mean(d$obs[order(d$obs,decreasing=TRUE)][1:50])
 
-In SAS this can be done in a number of ways. For instance:
+In SAS this can be done in a number of ways.[^1] For instance:
 
     proc sort data = d; by obs descending; run;
     data d2; set d(keep = obs); order = _N_; if order < 51; drop order; run;
@@ -30,7 +30,9 @@ Or:
     proc means data = d2; run;
 
 Although the second method only prints the mean to the output (along with all the other SAS output).
-I can appreciate this. However, there are several pieces that may alarm others
+I can appreciate this. 
+However, there are several pieces that may alarm others 
+that haven't found themselves needing to do so a thing in SAS
 (``keep = `` but not ``drop = ``, using not just SQL but ``proc sql``, the colon to create the macro variable ``meanObs`` but a ampersand to call it, where does ``_N_`` come from, and so on).
 
 Even being generally happy using SAS myself, I often wish I could do 
@@ -79,3 +81,5 @@ named after the chunk.
 Either methods for that S4 object (``HTMLoutput(sasBaseball)``, for instance)
 or elbow grease (by digging into the resulting object) would give the results when placed
 in an output chunk (or perhaps and S-expression inline).
+
+[^1]: These would actually be the examples I would use.
