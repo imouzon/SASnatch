@@ -16,8 +16,9 @@ makeSAScache <- function(SASnatch.working.directory=''){
          SASnatch.R.cache.path = paste(getwd(),'out/cache',sep='/')
       }
    }
-   expanded.SASnatch.R.cache.path = unlist(strsplit(SASnatch.R.cache.path,c('/','\\\\')))
-   SASnatch.working.directory = paste(expanded.SASnatch.R.cache.path[1:(which(expanded.SASnatch.R.cache.path == 'out')-1)],collapse='/')
+   #expanded.SASnatch.R.cache.path = unlist(strsplit(SASnatch.R.cache.path,c('/','\\\\')))
+   #SASnatch.working.directory = paste(expanded.SASnatch.R.cache.path[1:(which(expanded.SASnatch.R.cache.path == 'out')-1)],collapse='/')
+   SASnatch.working.directory = SASnatch.R.cache.path
 
    out.directory <- paste(SASnatch.working.directory,'out',sep='/')
    if(!file.exists(out.directory)){
