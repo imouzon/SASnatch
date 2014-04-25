@@ -32,7 +32,8 @@ SASnatch_hook = function(before, options, envir){
       SASnatch.SASRUN <<- runSASnatch(path_to_SAS.EXE=path_to_SAS.EXE, SAScache.directory=SAScache.directory, SASnatch.label=SASnatch.label)
       system(SASnatch.SASRUN)
    }else{
-      #SASnatch.S4 <<- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names='')
+      SASnatch.S4 <<- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names='')
+      #eval(parse(text=paste(SASnatch.label,'.res <<- SASnatch.S4',sep='')))
    }
    return()
 }
