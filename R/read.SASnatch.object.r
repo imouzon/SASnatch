@@ -45,7 +45,7 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    log.files <- files[grepl('.log',files)]
 
    #There may be no log file written
-   if(length(log.files = 0)){
+   if(length(log.files == 0)){
       log.file = ''
    }else{
       log.files <- paste(SAScache.directory,files[grepl('.log',files)],sep='/')
