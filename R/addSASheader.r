@@ -7,7 +7,11 @@
 #' addSASheader('~/courses/stat585/lab1/')
 addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASnatch-chunk'){
    #make sure the SAScache directory exists
-   SAScache.directory <- makeSAScache()
+   if(working.directory == ''){
+      SAScache.directory <- makeSAScache()
+   }else{
+      SAScache.directory <- working.directory
+   }
 
    #SAS log template
    SAScode.LOG.0.TEMPLATE = 'filename SASnatchlog "SASCACHE/SASnatch-chunk-name.log"; proc printto log = SASnatchlog new; run;'

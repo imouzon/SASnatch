@@ -100,8 +100,8 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
       SAStoR.3 <- ''
    }
 
-   SASnatch.SASheader <- addSASheader(missing.chunk.name='unlabeled-SASnatch-chunk')
-   SASnatch.SASfooter <- addSASfooter(missing.chunk.name='unlabeled-SASnatch-chunk')
+   SASnatch.SASheader <- addSASheader(working.directory = SAScache.directory,missing.chunk.name=S4name)
+   SASnatch.SASfooter <- addSASfooter(working.directory = SAScache.directory,missing.chunk.name=S4name)
 
    SASnatch.code <- paste(SASnatch.SASheader,RtoSAS.6,SAStoR.3,SASnatch.SASfooter,sep='\n\n')
 
@@ -113,5 +113,5 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
    SASnatch.SASRUN <- runSASnatch(path_to_SAS.EXE=path_to_SAS.EXE, SAScache.directory=SAScache.directory, SASnatch.label=SASnatch.label)
    system(SASnatch.SASRUN)
 
-   SASnatch.S4 <- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names=SASnatch.output.dsn)
+   SASnatch.S4 <- read.SASnatch.object(chunk.name=SASnatch.label,SASresults.path=SAScache.directory,SAS2R.names=SASnatch.output.dsn)
 }

@@ -8,6 +8,5 @@
 addSASfooter <- function(working.directory='',missing.chunk.name='unlabeled-SASnatch-chunk'){
    #Footer templates
    SAScode.FOOTER.0.TEMPLATE = 'ods _all_ close; ods trace off; run; proc printto; run;'
-
    return(SAScode.FOOTER.0.TEMPLATE)
 }
