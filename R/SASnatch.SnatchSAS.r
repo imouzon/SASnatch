@@ -35,7 +35,6 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
    RtoSAS.READ.FILE.TEMPLATE <- 'write(ObjectWithDataLoadingCode,file="SASCACHE/SASnatch-chunk-name.read.data.sas")'
 
    #Make sure that the SAScache directory existsand you know where it is
-   SAScache.directory <- makeSAScache()
    RtoSAS.WRITE.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,RtoSAS.WRITE.CODE.TEMPLATE)
    RtoSAS.READ.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,RtoSAS.READ.CODE.TEMPLATE)
    RtoSAS.READ.FILE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,RtoSAS.READ.FILE.TEMPLATE)
