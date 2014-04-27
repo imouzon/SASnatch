@@ -14,7 +14,8 @@ addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASn
    }
 
    #SAS log template
-   SAScode.LOG.0.TEMPLATE = 'filename SASnatchlog "SASCACHE/SASnatch-chunk-name.log"; proc printto log = SASnatchlog new; run;'
+   #SAScode.LOG.0.TEMPLATE = 'filename SASnatchlog "SASCACHE/SASnatch-chunk-name.log"; proc printto log = SASnatchlog new; run;'
+   SAScode.LOG.0.TEMPLATE = ''
 
    #Header templates
    SAScode.HEADER.0.TEMPLATE = 'ods trace on; ods noproctitle; title;'

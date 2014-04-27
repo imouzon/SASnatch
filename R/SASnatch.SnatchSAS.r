@@ -114,4 +114,5 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
    system(SASnatch.SASRUN)
 
    SASnatch.S4 <- read.SASnatch.object(chunk.name=SASnatch.label,SASresults.path=SAScache.directory,SAS2R.names=SASnatch.output.dsn)
+   return(SASnatch.S4)
 }
