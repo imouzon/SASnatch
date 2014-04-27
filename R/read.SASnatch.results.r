@@ -18,22 +18,35 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
    files <- list.files(path=SAScache.directory)
    files <- unique(files[grepl(chunk.name,files)])
 
-   #"true results are results that output a table
-   html.files <- paste(SAScache.directory,files[grepl('.html',files)],sep='/')
-   r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.results[[i]]))
-   true.results <- sapply(1:length(html.files), function(i) length(r.results))
+   if(!use.Xtable){
+      #get .html files
+      html.files <- paste(SAScache.directory,files[grepl('.html',files)],sep='/')
+      html.results <- lapply(1:length(html.files),function(i) paste(scan(file=html.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
 
-   #get only the .html files that have tables in them (the "true" results)
-   html.files <- html.files[true.results]
-   html.results <- lapply(1:length(html.files),function(i) paste(scan(file=html.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
+      #get .tex files
+      tex.files <- paste(SAScache.directory,files[grepl('.tex',files)],sep='/')
+      tex.results <- lapply(1:length(tex.files),function(i) paste(scan(file=tex.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
 
-   #get .tex files using the corresponding "true" html files
-   tex.files <- paste(SAScache.directory,files[grepl('.tex',files)],sep='/')
-   tex.files <- tex.files[true.results]
-   tex.results <- lapply(1:length(tex.files),function(i) paste(scan(file=tex.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
+      #no R results without xtable
+      r.results <- list()
+   }else{
+      #"true results are results that output a table
+      html.files <- paste(SAScache.directory,files[grepl('.html',files)],sep='/')
+      r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.results[[i]]))
 
-   #get simple text results as R tables using "true" results
-   r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.results[[i]]))
+      #many of these results will not be tables
+      true.results <- sapply(1:length(html.files), function(i) length(r.results))
+
+      #get only the .html files that have tables in them (the "true" results)
+      html.files <- html.files[true.results]
+      r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.results[[i]]))
+
+      #convert the r.results to tex files
+      tex.results <- lapply(1:length(true.results), function(i) print(xtable(r.results[[i]])))
+
+      #convert the r.results to html files
+      html.results <- lapply(1:length(true.results), function(i) print(xtable(r.results[[i]],type='html')))
+   }
 
    #make new snatchResults S4 object
    SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results, R = r.results)
