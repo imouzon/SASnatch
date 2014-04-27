@@ -45,5 +45,5 @@ read.SASnatch.object<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
                            results = SASnatch.results, 
                            out = output2R, 
                            log = log.file)
-   return(SASnatch.object)
+   return(1)
 }
