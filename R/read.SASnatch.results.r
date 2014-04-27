@@ -23,6 +23,5 @@ read.SASnatch.results<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv')
 
    #make new snatchResults S4 object
    SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results)
-   #SASnatch.results <- list('HTML' = html.results,'TeX' = tex.results)
    return(SASnatch.results)
 }
