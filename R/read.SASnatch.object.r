@@ -17,8 +17,8 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    }
 
    #now that the file structure exists read the output
-   files <- list.files(path=SAScache.directory)
-   files <- unique(files[grepl(chunk.name,files)])
+   files.cache <- list.files(path=SAScache.directory)
+   files <- unique(files.cache[grepl(chunk.name,files.cache)])
 
    #get results from SAS code
    SASnatch.results <- read.SASnatch.results(chunk.name=chunk.name,SASresults.path=SASresults.path,SAS2R.names=SAS2R.names,SAS2R.type=SAS2R.type)
@@ -29,11 +29,11 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    code.file <- paste(scan(file=code.files,sep='\n',what='character',quiet=TRUE),collapse='\n')
 
    #results in a dataset (default to CSV)
-   #if(SAS2R.names[1] != ''){
-   #   output.files.short <- files[sapply(1:length(files),function(j) sum(sapply(1:length(SAS2R.names),function(i) grepl(SAS2R.names[i],files[j]))))  > 0]
-   #}else{
-      output.files.short <- files[grepl(SAS2R.type,files)]
-   #}
+   if(SAS2R.names[1] != ''){
+      output.files.short <- files.cache[sapply(1:length(files.cache),function(j) sum(sapply(1:length(SAS2R.names),function(i) grepl(SAS2R.names[i],files.cache[j]))))  > 0]
+   }else{
+      output.files.short <- files.cache[grepl(SAS2R.type,files.cache)]
+   }
 
    #output.files <- paste(SAScache.directory,output.files.short,sep='/')
    #output.sets <- lapply(1:length(output.files), function(i) read.csv(file=output.files[i]))
