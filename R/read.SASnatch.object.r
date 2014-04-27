@@ -25,6 +25,7 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
 
    #get .sas files
    code.files <- paste(SAScache.directory,files[grepl('.sas',files)],sep='/')
+   code.files <- files
    #code.file <- paste(scan(file=code.files,sep='\n',what='character',quiet=TRUE),collapse='\n')
 
    ##results in a dataset (default to CSV)
