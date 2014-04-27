@@ -4,6 +4,7 @@
 #' @param SASresults.path character value, optional argument
 #' @param SAS2R.type character value, optional argument
 #' @param SAS2R.names character vector, optional argument
+#' @param use.xtable logical value, optional argument
 #' @export
 
 read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names='',SAS2R.type='csv',use.xtable=TRUE){
