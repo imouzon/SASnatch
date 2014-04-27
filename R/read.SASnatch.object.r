@@ -21,7 +21,7 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    files <- files[grepl(chunk.name,files)]
 
    #get results from SAS code
-   SASnatch.results <- read.SASnatch.results(chunk.name=chunk.name,SASresults.path == SASresults.path,SAS2R.names=SAS2R.names,SAS2R.type=SAS2R.type)
+   SASnatch.results <- read.SASnatch.results(chunk.name=chunk.name,SASresults.path=SASresults.path,SAS2R.names=SAS2R.names,SAS2R.type=SAS2R.type)
 
    #get .sas files
    code.files <- paste(SAScache.directory,files[grepl('.sas',files)],sep='/')
