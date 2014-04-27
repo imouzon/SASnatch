@@ -43,12 +43,12 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    }
    output2R <- new('snatchOutput',SAS2R=output.sets)
 
-   ##log files imported into R
-   ##log.files <- paste(SAScache.directory,files[grepl('.log',files)],sep='/')
-   ##log.file <- paste(scan(file=log.files,sep='\n',what='character',quiet=TRUE),sep='\n')
-   #log.file <- ''
+   #log files imported into R
+   #log.files <- paste(SAScache.directory,files[grepl('.log',files)],sep='/')
+   #log.file <- paste(scan(file=log.files,sep='\n',what='character',quiet=TRUE),sep='\n')
+   log.file <- ''
 
-   #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
-   #return(SASnatch.object)
-   return(output.sets)
+   SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
+   return(SASnatch.object)
+   #return(output.sets)
 }
