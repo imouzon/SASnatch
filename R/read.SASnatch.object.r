@@ -54,5 +54,5 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    }
    
    SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
-   return(log.files)
+   return(SASnatch.object)
 }
