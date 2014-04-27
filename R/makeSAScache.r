@@ -19,7 +19,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
 
    #terminals don't work - if the terminal server is being used, just set the 
    #cache path to the desktop and be done with it
-   if(grep('iastate',SASnatch.R.cache.path)){
+   if(grepl('iastate',SASnatch.R.cache.path)){
       SASnatch.R.cache.path = unlist(strsplit(SASnatch.R.cache.path,'/'))
       SASnatch.R.cache.path = paste('U:',paste(SASnatch.R.cache.path[4:length(place)],collapse='/'),sep='/')
    }
