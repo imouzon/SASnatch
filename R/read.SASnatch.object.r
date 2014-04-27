@@ -1,15 +1,20 @@
 #' Create folder setup for SASnatch
 #'
 #' @param chunk.name character value, optional argument
+#' @param SASresults.path character value, optional argument
 #' @param SAS2R.type character value, optional argument
 #' @param SAS2R.names character vector, optional argument
 #' @export
 #' @examples
 #' read.SASnatch.object('SASout','~/courses/stat585/lab1/')
 
-read.SASnatch.object<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
+read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names='',SAS2R.type='csv'){
    #get the SAScache.directory
-   SAScache.directory <- makeSAScache()
+   if(SASresults.path == ''){
+      SAScache.directory = makeSAScache()
+   }else{
+      SAScache.directory = SASresults.path
+   }
 
    #now that the file structure exists read the output
    files <- list.files(path=SAScache.directory)
@@ -50,6 +55,6 @@ read.SASnatch.object<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
    #log.file <- paste(scan(file=log.files,sep='\n',what='character',quiet=TRUE),sep='\n')
    log.file <- ''
 
-   #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
-   return(SASnatch.results)
+   SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
+   return(SASnatch.object)
 }

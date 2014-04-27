@@ -2,11 +2,11 @@
 #'
 #' @export
 
-#Two types of output, HTML and TeX
-setClass('snatchResults',representation(HTML = 'list', TeX = 'list'))
-
 #the dataset that was the result
 setClass('snatchOutput',representation(SAS2R = 'list'))
+
+#Two types of output, HTML and TeX
+setClass('snatchResults',representation(HTML = 'list', TeX = 'list'))
 
 #The actual snatch object
 setClass('SASnatch', 
