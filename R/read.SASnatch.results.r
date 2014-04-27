@@ -6,7 +6,7 @@
 #' @param SAS2R.names character vector, optional argument
 #' @export
 
-read.SASnatch.results<- function (chunk.name='',SASresults.path == '',SAS2R.names='',SAS2R.type='csv'){
+read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names='',SAS2R.type='csv'){
    #get the SAScache.directory
    if(SASresults.path == ''){
       SAScache.directory = makeSAScache()
