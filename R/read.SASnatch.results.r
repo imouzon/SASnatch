@@ -27,7 +27,7 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
    tex.results <- lapply(1:length(tex.files),function(i) paste(scan(file=tex.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
 
    #get simple text results as R tables
-   r.results <- lapply(1:length(html.files),function(i) readHTMLtable(html.results[[i]]))
+   r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.results[[i]]))
 
    #make new snatchResults S4 object
    SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results, R = r.results)
