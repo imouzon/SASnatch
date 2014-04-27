@@ -1,13 +1,18 @@
 #' read results from SASnatch 
 #'
 #' @param chunk.name character value, optional argument
+#' @param SASresults.path character value, optional argument
 #' @param SAS2R.type character value, optional argument
 #' @param SAS2R.names character vector, optional argument
 #' @export
 
-read.SASnatch.results<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
+read.SASnatch.results<- function (chunk.name='',SASresults.path == '',SAS2R.names='',SAS2R.type='csv'){
    #get the SAScache.directory
-   SAScache.directory <- makeSAScache()
+   if(SASresults.path == ''){
+      SAScache.directory = makeSAScache()
+   }else{
+      SAScache.directory = SASresults.path
+   }
 
    #now that the file structure exists read the output
    files <- list.files(path=SAScache.directory)
