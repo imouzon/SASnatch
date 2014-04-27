@@ -1,10 +1,34 @@
-#' functions for knitr hooks
+#' call SAS without knitr
 #'
 #' @param dsn character vector, optional argument
-#' @param SASnatch.code character value, optional argument
-#' @param SASnatch.chunk_name character value, optional argument
+#' @param code character value, optional argument
+#' @param S4name character value, optional argument
 #' @export 
-SASnatch.before = function(dsn,SASnatch.code,SASnatch.chunk_name='SASnatch'){
+SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
+   #There is no SASnatch cache, so use the working directory
+   SAScache.directory <- paste(getwd(),'SnatchSAS',sep='/')
+
+   #First datasets are input second datasets are output
+   SASnatch.dsn <- dsn
+
+   #get the code from the chunk
+   SASnatch.code <- code
+
+   #get the chunk name
+   SASnatch.chunk_name <- S4name
+   SASnatch.label <- S4name
+
+   #First datasets are input second datasets are output
+   SASnatch.output.dsn <- dsn[2]
+
+   #terminals don't work - if the terminal server is being used, then
+   #we need U:/ not /////iastat stuff
+   #cache path to the desktop and be done with it
+   if(grepl('iastate',SASnatch.R.cache.path)){
+      SASnatch.R.cache.path = unlist(strsplit(SASnatch.R.cache.path,'/'))
+      SASnatch.R.cache.path = paste('U:',paste(SASnatch.R.cache.path[4:length(place)],collapse='/'),sep='/')
+   }
+   
    #Code Template for transfering dataset to SAS
    RtoSAS.WRITE.CODE.TEMPLATE <- 'write.csv(DATASET_TO_GIVE_TO_SAS,"SASCACHE/DATASET_TO_GIVE_TO_SAS.csv",na="",row.names=FALSE)'
    RtoSAS.READ.CODE.TEMPLATE <- 'proc import datafile = "SASCACHE/DATASET_TO_GIVE_TO_SAS.csv" out = DATASET_TO_GIVE_TO_SAS dbms = CSV replace; getnames = yes; run;'
@@ -19,12 +43,9 @@ SASnatch.before = function(dsn,SASnatch.code,SASnatch.chunk_name='SASnatch'){
 
    #Code Template for transfering dataset to SAS
    SAStoR.WRITE.CODE.TEMPLATE = 'proc export data = DATASET_TO_GIVE_TO_R outfile = "SASCACHE/DATASET_TO_GIVE_TO_R.csv" dbms = csv replace; run;'
-   #SAStoR.WRITE.FILE.TEMPLATE <- 'write(ObjectWithDataWritingCode,file="SASCACHE/SASnatch-chunk-name.write.data.sas")'
 
    #Make sure that the SAScache directory existsand you know where it is
    SAStoR.WRITE.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,SAStoR.WRITE.CODE.TEMPLATE)
-   #SAStoR.WRITE.FILE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,SAStoR.WRITE.FILE.TEMPLATE)
-   #SAStoR.WRITE.FILE.TEMPLATE <- gsub('SASnatch-chunk-name',SASnatch.chunk_name,SAStoR.WRITE.FILE.TEMPLATE)
       
    #which data sets are we copying for SAS to use
    RtoSAS.0 <- dsn[1]
@@ -46,13 +67,8 @@ SASnatch.before = function(dsn,SASnatch.code,SASnatch.chunk_name='SASnatch'){
 
       #collapse the text so that it is code that will run in one line
       RtoSAS.5 <- paste(RtoSAS.4,collapse='\n\n')
-      #RtoSAS.READ.FILE.TEMPLATE <- gsub('ObjectWithDataLoadingCode','RtoSAS.5',RtoSAS.READ.FILE.TEMPLATE)
-      
-      #create the sas file that reads the dataset
-      #eval(parse(text = RtoSAS.READ.FILE.TEMPLATE))
    }else{
       RtoSAS.3 <- ''
-      #RtoSAS.READ.FILE.TEMPLATE <- ''
    }
 
    #create the csv files using the code from RtoSAS.3
@@ -74,20 +90,22 @@ SASnatch.before = function(dsn,SASnatch.code,SASnatch.chunk_name='SASnatch'){
 
       #collapse the text so that it is code that will run in one line
       SAStoR.3 <- paste(SAStoR.2,collapse='\n\n')
-      #SAStoR.WRITE.FILE.TEMPLATE <- gsub('ObjectWithDataWritingCode','SAStoR.3',SAStoR.WRITE.FILE.TEMPLATE)
-
-      #create the SAS file used to write the code
-      #eval(parse(text = SAStoR.WRITE.FILE.TEMPLATE))
-
-      #SAStoR.READ.CODE.TEMPLATE <- gsub('SASCACHE',SAScache.directory,SAStoR.READ.CODE.TEMPLATE)
    }else{
       SAStoR.3 <- ''
    }
 
-   SASnatch.SASheader <- SASnatch:::addSASheader(missing.chunk.name='unlabeled-SASnatch-chunk')
-   SASnatch.SASfooter <- SASnatch:::addSASfooter(missing.chunk.name='unlabeled-SASnatch-chunk')
+   SASnatch.SASheader <- addSASheader(missing.chunk.name='unlabeled-SASnatch-chunk')
+   SASnatch.SASfooter <- addSASfooter(missing.chunk.name='unlabeled-SASnatch-chunk')
 
-   SASnatch.SASfile <- paste(SASnatch.SASheader,RtoSAS.6,SAStoR.3,SASnatch.SASfooter,sep='\n\n')
+   SASnatch.code <- paste(SASnatch.SASheader,RtoSAS.6,SAStoR.3,SASnatch.SASfooter,sep='\n\n')
 
-   return(SASnatch.SASfile)
+   #create .sas file in SAScache directory
+   SASnatch.write.sascode <- paste('write(SASnatch.code,file="',SAScache.directory,'/',SASnatch.label,'.sas")',sep='')
+   eval(parse(text= SASnatch.write.sascode))
+
+   #run the SAS code in the given file directory
+   SASnatch.SASRUN <- runSASnatch(path_to_SAS.EXE=path_to_SAS.EXE, SAScache.directory=SAScache.directory, SASnatch.label=SASnatch.label)
+   system(SASnatch.SASRUN)
+
+   SASnatch.S4 <- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names=SASnatch.output.dsn)
 }
