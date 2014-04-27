@@ -24,9 +24,9 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
    #terminals don't work - if the terminal server is being used, then
    #we need U:/ not /////iastat stuff
    #cache path to the desktop and be done with it
-   if(grepl('iastate',SASnatch.R.cache.path)){
-      SASnatch.R.cache.path = unlist(strsplit(SASnatch.R.cache.path,'/'))
-      SASnatch.R.cache.path = paste('U:',paste(SASnatch.R.cache.path[4:length(place)],collapse='/'),sep='/')
+   if(grepl('iastate',SAScache.directory)){
+      SAScache.directory = unlist(strsplit(SAScache.directory,'/'))
+      SAScache.directory = paste('U:',paste(SAScache.directory[4:length(place)],collapse='/'),sep='/')
    }
    
    #Code Template for transfering dataset to SAS
