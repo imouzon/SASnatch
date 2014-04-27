@@ -2,8 +2,8 @@
 #'
 #' @param chunk.name character value, optional argument
 #' @param SASresults.path character value, optional argument
-#' @param SAS2R.type character value, optional argument
 #' @param SAS2R.names character vector, optional argument
+#' @param SAS2R.type character value, optional argument
 #' @export
 #' @examples
 #' read.SASnatch.object('SASout','~/courses/stat585/lab1/')
