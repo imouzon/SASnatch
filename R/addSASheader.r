@@ -10,7 +10,7 @@ addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASn
    SAScache.directory <- makeSAScache()
 
    #SAS log template
-   SASlog.LOG.0.TEMPLATE = 'filename SASnatchlog "SASCACHE/SASnatch-chunk-name.log"; proc printto log = SASnatchlog; run;'
+   SAScode.LOG.0.TEMPLATE = 'filename SASnatchlog "SASCACHE/SASnatch-chunk-name.log"; proc printto log = SASnatchlog; run;'
 
    #Header templates
    SAScode.HEADER.0.TEMPLATE = 'ods trace on; ods noproctitle; title;'
@@ -18,7 +18,7 @@ addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASn
    SAScode.HEADER.2.TEMPLATE = 'ods tagsets.tablesonlylatex file="SASCACHE/SASnatch-chunk-name.tex" (notop nobot) NEWFILE = table;'
 
    #fix the SASCACHE
-   SAScode.LOG.0.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.LOG.0.TEMPLATE)
+   SAScode.LOG.0.TEMPLATE =    gsub('SASCACHE',SAScache.directory, SAScode.LOG.0.TEMPLATE)
    SAScode.HEADER.0.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.0.TEMPLATE)
    SAScode.HEADER.1.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.1.TEMPLATE)
    SAScode.HEADER.2.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.2.TEMPLATE)
