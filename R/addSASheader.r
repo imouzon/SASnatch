@@ -11,7 +11,7 @@ addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASn
 
    #Header templates
    SAScode.HEADER.0.TEMPLATE = 'ods noproctitle; title;'
-   SAScode.HEADER.1.TEMPLATE = 'ods html body = "SASCACHE/SASnatch-chunk-name.html" NEWFILE = OUTPUT NOTOP NOBOT;'
+   SAScode.HEADER.1.TEMPLATE = 'ods html body = "SASCACHE/SASnatch-chunk-name.html" NEWFILE = OUTPUT;'
    SAScode.HEADER.2.TEMPLATE = 'ods tagsets.tablesonlylatex file="SASCACHE/SASnatch-chunk-name.tex" (notop nobot) NEWFILE = table;'
 
    #fix the SASCACHE
