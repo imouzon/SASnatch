@@ -16,7 +16,7 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
 
    #now that the file structure exists read the output
    files <- list.files(path=SAScache.directory)
-   files <- files[grepl(chunk.name,files)]
+   files <- unique(files[grepl(chunk.name,files)])
 
    #get .html files
    html.files <- paste(SAScache.directory,files[grepl('.html',files)],sep='/')

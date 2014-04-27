@@ -18,7 +18,7 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
 
    #now that the file structure exists read the output
    files <- list.files(path=SAScache.directory)
-   files <- files[grepl(chunk.name,files)]
+   files <- unique(files[grepl(chunk.name,files)])
 
    #get results from SAS code
    SASnatch.results <- read.SASnatch.results(chunk.name=chunk.name,SASresults.path=SASresults.path,SAS2R.names=SAS2R.names,SAS2R.type=SAS2R.type)
