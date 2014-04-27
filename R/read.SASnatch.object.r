@@ -28,7 +28,7 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    code.files <- code.files[!grepl('.sas~',code.files)]
    code.file <- paste(scan(file=code.files,sep='\n',what='character',quiet=TRUE),collapse='\n')
 
-   ##results in a dataset (default to CSV)
+   #results in a dataset (default to CSV)
    #if(length(SAS2R.names) > 1 | SAS2R.names[1] != ''){
    #   output.files.short <- files[sapply(1:length(files),function(j) sum(sapply(1:length(SAS2R.names),function(i) grepl(SAS2R.names[i],files[j]))))  > 0]
    #}else{
@@ -50,5 +50,5 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
 
    #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
    #return(SASnatch.object)
-   return(code.files)
+   return(code.file)
 }
