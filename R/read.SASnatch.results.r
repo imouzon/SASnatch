@@ -6,7 +6,7 @@
 #' @param SAS2R.names character vector, optional argument
 #' @export
 
-read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names='',SAS2R.type='csv'){
+read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names='',SAS2R.type='csv',use.xtable=TRUE){
    #get the SAScache.directory
    if(SASresults.path == ''){
       SAScache.directory = makeSAScache()
@@ -18,7 +18,7 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
    files <- list.files(path=SAScache.directory)
    files <- unique(files[grepl(chunk.name,files)])
 
-   if(!use.Xtable){
+   if(!use.xtable){
       #get .html files
       html.files <- paste(SAScache.directory,files[grepl('.html',files)],sep='/')
       html.results <- lapply(1:length(html.files),function(i) paste(scan(file=html.files[i],sep='\n',what='character',quiet=TRUE),collapse='\n'))
