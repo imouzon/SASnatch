@@ -26,7 +26,7 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
    #cache path to the desktop and be done with it
    if(grepl('iastate',SAScache.directory)){
       SAScache.directory = unlist(strsplit(SAScache.directory,'/'))
-      SAScache.directory = paste('U:',paste(SAScache.directory[4:length(place)],collapse='/'),sep='/')
+      SAScache.directory = paste('U:',paste(SAScache.directory[4:length(SAScache.directory)],collapse='/'),sep='/')
    }
    
    #Code Template for transfering dataset to SAS
