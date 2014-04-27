@@ -15,6 +15,10 @@ SASnatch_hook = function(before, options, envir){
       #get datasets to input and output
       SASnatch.dsn <<- opts_current$get('SASnatch')
 
+      #First datasets are input second datasets are output
+      SASnatch.input.dsn <<- SASnatch.dsn[1]
+      SASnatch.output.dsn <<- SASnatch.dsn[2]
+
       #get the code from the chunk
       SASnatch.code <<- opts_current$get('code')
 
@@ -32,7 +36,7 @@ SASnatch_hook = function(before, options, envir){
       SASnatch.SASRUN <<- runSASnatch(path_to_SAS.EXE=path_to_SAS.EXE, SAScache.directory=SAScache.directory, SASnatch.label=SASnatch.label)
       system(SASnatch.SASRUN)
 
-      SASnatch.S4 <<- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names='')
+      SASnatch.S4 <<- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names=SASnatch.output.dsn)
    }else{
       #eval(parse(text=paste(SASnatch.label,'.res <<- SASnatch.S4',sep='')))
    }

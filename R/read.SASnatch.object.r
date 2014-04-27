@@ -29,11 +29,11 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    code.file <- paste(scan(file=code.files,sep='\n',what='character',quiet=TRUE),collapse='\n')
 
    #results in a dataset (default to CSV)
-   #if(length(SAS2R.names) > 1 | SAS2R.names[1] != ''){
-   #   output.files.short <- files[sapply(1:length(files),function(j) sum(sapply(1:length(SAS2R.names),function(i) grepl(SAS2R.names[i],files[j]))))  > 0]
-   #}else{
-   #   output.files.short <- files[grepl(SAS2R.type,files)]
-   #}
+   if(length(SAS2R.names) > 1 | SAS2R.names[1] != ''){
+      output.files.short <- files[sapply(1:length(files),function(j) sum(sapply(1:length(SAS2R.names),function(i) grepl(SAS2R.names[i],files[j]))))  > 0]
+   }else{
+      output.files.short <- files[grepl(SAS2R.type,files)]
+   }
 
    #output.files <- paste(SAScache.directory,output.files.short,sep='/')
    #output.sets <- lapply(1:length(output.files), function(i) read.csv(file=output.files[i]))
@@ -50,5 +50,5 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
 
    #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
    #return(SASnatch.object)
-   return(files)
+   return(output.files.short)
 }
