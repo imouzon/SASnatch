@@ -9,22 +9,28 @@ addSASheader <- function(working.directory='',missing.chunk.name='unlabeled-SASn
    #make sure the SAScache directory exists
    SAScache.directory <- makeSAScache()
 
+   #SAS log template
+   SASlog.LOG.0.TEMPLATE = 'filename SASnatchlog "SASCACHE/SASnatch-chunk-name.log"; proc printto log = SASnatchlog; run;'
+
    #Header templates
-   SAScode.HEADER.0.TEMPLATE = 'ods noproctitle; title;'
+   SAScode.HEADER.0.TEMPLATE = 'ods trace on; ods noproctitle; title;'
    SAScode.HEADER.1.TEMPLATE = 'ods html body = "SASCACHE/SASnatch-chunk-name.html" NEWFILE = OUTPUT;'
    SAScode.HEADER.2.TEMPLATE = 'ods tagsets.tablesonlylatex file="SASCACHE/SASnatch-chunk-name.tex" (notop nobot) NEWFILE = table;'
 
    #fix the SASCACHE
+   SAScode.LOG.0.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.LOG.0.TEMPLATE)
    SAScode.HEADER.0.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.0.TEMPLATE)
    SAScode.HEADER.1.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.1.TEMPLATE)
    SAScode.HEADER.2.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.HEADER.2.TEMPLATE)
 
    if(!is.null(knitr:::opts_current$get('label'))){
+      SAScode.LOG.0.TEMPLATE = gsub('SASnatch-chunk-name',knitr:::opts_current$get('label'),SAScode.LOG.0.TEMPLATE)
       SAScode.HEADER.1.TEMPLATE = gsub('SASnatch-chunk-name',knitr:::opts_current$get('label'),SAScode.HEADER.1.TEMPLATE)
       SAScode.HEADER.2.TEMPLATE = gsub('SASnatch-chunk-name',knitr:::opts_current$get('label'),SAScode.HEADER.2.TEMPLATE)
    }else{
+      SAScode.LOG.0.TEMPLATE = gsub('SASnatch-chunk-name',missing.chunk.name,SAScode.LOG.0.TEMPLATE)
       SAScode.HEADER.1.TEMPLATE = gsub('SASnatch-chunk-name',missing.chunk.name,SAScode.HEADER.1.TEMPLATE)
       SAScode.HEADER.2.TEMPLATE = gsub('SASnatch-chunk-name',missing.chunk.name,SAScode.HEADER.2.TEMPLATE)
    }
-   return(paste(SAScode.HEADER.0.TEMPLATE, SAScode.HEADER.1.TEMPLATE, SAScode.HEADER.2.TEMPLATE,sep='\n\n'))
+   return(paste(SAScode.LOG.0.TEMPLATE,SAScode.HEADER.0.TEMPLATE, SAScode.HEADER.1.TEMPLATE, SAScode.HEADER.2.TEMPLATE,sep='\n\n'))
 }
