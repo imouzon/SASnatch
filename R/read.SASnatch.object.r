@@ -8,7 +8,7 @@
 #' @examples
 #' read.SASnatch.object('SASout','~/courses/stat585/lab1/')
 
-read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names='',SAS2R.type='csv'){
+read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names='',SAS2R.type='.csv'){
    #get the SAScache.directory
    if(SASresults.path == ''){
       SAScache.directory = makeSAScache()
@@ -50,5 +50,5 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
 
    #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
    #return(SASnatch.object)
-   return(SAS2R.names)
+   return(output.files.short)
 }
