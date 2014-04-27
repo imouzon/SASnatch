@@ -23,8 +23,8 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
    #get results from SAS code
    SASnatch.results <- read.SASnatch.results(chunk.name=chunk.name,SASresults.path=SASresults.path,SAS2R.names=SAS2R.names,SAS2R.type=SAS2R.type)
 
-   ##get .sas files
-   #code.files <- paste(SAScache.directory,files[grepl('.sas',files)],sep='/')
+   #get .sas files
+   code.files <- paste(SAScache.directory,files[grepl('.sas',files)],sep='/')
    #code.file <- paste(scan(file=code.files,sep='\n',what='character',quiet=TRUE),collapse='\n')
 
    ##results in a dataset (default to CSV)
@@ -49,5 +49,5 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
 
    #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
    #return(SASnatch.object)
-   return(SASnatch.results)
+   return(code.files)
 }
