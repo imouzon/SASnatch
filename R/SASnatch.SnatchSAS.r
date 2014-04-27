@@ -28,6 +28,13 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
       SAScache.directory = unlist(strsplit(SAScache.directory,'/'))
       SAScache.directory = paste('U:',paste(SAScache.directory[4:length(SAScache.directory)],collapse='/'),sep='/')
    }
+
+   #make sure the directory you are wriitng to exists
+   if(!file.exists(SAScache.directory)){
+      message.1 = "Creating folder 'SnatchSAS' in current working directory"
+      message(message.1)
+      dir.create(file.path(getwd(),'SnatchSAS'))
+   }
    
    #Code Template for transfering dataset to SAS
    RtoSAS.WRITE.CODE.TEMPLATE <- 'write.csv(DATASET_TO_GIVE_TO_SAS,"SASCACHE/DATASET_TO_GIVE_TO_SAS.csv",na="",row.names=FALSE)'
