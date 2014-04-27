@@ -41,9 +41,9 @@ read.SASnatch.object<- function (chunk.name='',SAS2R.names='',SAS2R.type='csv'){
    log.file <- ''
 
    #SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
-   SASnatch.object <- list('code' = code.file, 
-                           'results' = SASnatch.results, 
-                           'out' = output2R, 
-                           'log' = log.file)
+   SASnatch.object <- list(code = code.file, 
+                           results = SASnatch.results, 
+                           out = output2R, 
+                           log = log.file)
    return(SASnatch.object)
 }
