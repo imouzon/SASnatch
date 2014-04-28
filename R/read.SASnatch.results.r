@@ -53,5 +53,6 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
 
    #make new snatchResults S4 object
    SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results, R = r.results)
-   return(SASnatch.results)
+   #return(SASnatch.results)
+   return(html.files)
 }
