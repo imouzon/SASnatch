@@ -34,14 +34,14 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
    }else{
       #"true results are results that output a table
       html.files <- paste(SAScache.directory,files[grepl('.html',files)],sep='/')
-      r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.files[[i]]))
+      r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.files[i]))
 
       #many of these results will not be tables
       true.results <- sapply(1:length(html.files), function(i) length(r.results))
 
       #get only the .html files that have tables in them (the "true" results)
       html.files <- html.files[true.results]
-      r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.files[[i]]))
+      r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.files[i]))
 
       #convert the r.results to tex files
       tex.results <- lapply(1:length(true.results), function(i) lapply(1:length(r.results[[i]]), function(j) xtable(r.results[[i]][[j]])))
