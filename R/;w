@@ -6,6 +6,7 @@
 #' @export
 #' @examples
 #' submitSAScode()
+
 submitSAScode = function(SAScache.directory='',path_to_SAS.exe='',SASnatch.chunk_name=''){
    if(SAScache.directory=='') SAScache.directory = getwd()
    if(SASnatch.chunk_name =='') SASnathc.chunk_name = 'untitled-SAS-chunk'
