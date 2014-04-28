@@ -1,7 +1,7 @@
 #' Print SASnatch results
 #'
-#' @param working.directory character value, optional argument
-#' @param chunk.name character value, optional argument
+#' @param SASnatch.S4 SASnatch object
+#' @param type character value, optional argument
 #' @export
 printSASnatch <- function(SASnatch.S4,type='R'){
    if(type == 'R'){
