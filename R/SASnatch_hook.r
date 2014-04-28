@@ -38,7 +38,7 @@ SASnatch_hook = function(before, options, envir){
 
       SASnatch.S4 <<- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names=SASnatch.output.dsn)
    }else{
-      #eval(parse(text=paste(SASnatch.label,'.res <<- SASnatch.S4',sep='')))
+      eval(parse(text=paste(SASnatch.label,'.snatch <<- SASnatch.S4',sep='')))
    }
    return()
 }
