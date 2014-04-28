@@ -41,7 +41,7 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
       true.results <- sapply(1:length(html.files), function(i) length(r.results[[i]])>0)
 
       #get only the .html files that have tables in them (the "true" results)
-      html.files <- html.files[true.results]
+      html.files <- html.files[which(true.results==TRUE)]
       r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.files[i]))
 
       #convert the r.results to tex files
@@ -52,7 +52,7 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
    }
 
    #make new snatchResults S4 object
-   #SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results, R = r.results,files = paste(html.files,sep='\n'))
-   SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results, R = r.results,files = paste(true.results,sep='\n'))
+   SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results, R = r.results,files = paste(html.files,sep='\n'))
+   #SASnatch.results <- new('snatchResults', HTML = html.results, TeX = tex.results, R = r.results,files = paste(true.results,sep='\n'))
    return(SASnatch.results)
 }
