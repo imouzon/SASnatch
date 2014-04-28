@@ -14,7 +14,7 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
       SAScache.directory = SASresults.path
    }
 
-   use.xtable = TRUE
+   if(is.null(use.xtable)) use.xtable = TRUE
 
    #now that the file structure exists read the output
    files <- list.files(path=SAScache.directory)
