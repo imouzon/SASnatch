@@ -4,8 +4,6 @@
 #' @param path_to_SAS.exe character value, optional argument
 #' @param SASnatch.chunk_name character value, optional argument
 #' @export
-#' @examples
-#' submitSAScode()
 submitSAScode = function(SAScache.directory='',path_to_SAS.exe='',SASnatch.chunk_name=''){
    if(SAScache.directory==''){
       SAScache.directory = getwd()
