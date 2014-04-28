@@ -27,4 +27,5 @@ printSASnatch <- function(SASnatch.S4,type='R'){
          print(SASnatch@results@HTML[[i]][[j]])
       }
    }
+   return()
 }
