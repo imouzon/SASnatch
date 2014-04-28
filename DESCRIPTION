@@ -6,6 +6,9 @@ Version: 0.1
 Author: Ian Mouzon <imouzon@iastate.edu>
 Maintainer: Ian Mouzon <imouzon@iastate.edu>
 VignetteBuilder: knitr
+Depends:
+    XML,
+    xtable
 Suggests:
     knitr
 License: MIT
