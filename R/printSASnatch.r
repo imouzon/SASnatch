@@ -3,7 +3,7 @@
 #' @param SASnatch.S4 SASnatch object, optional argument
 #' @param type character value, optional argument
 #' @export
-printSASnatch <- function(SASnatch.S4=list(),type='R'){
+printSASnatch <- function(SASnatch=list(),type='R'){
    if(type == 'R'){
       for(i in 1:length(SASnatch@results@R)){
          #Footer templates
