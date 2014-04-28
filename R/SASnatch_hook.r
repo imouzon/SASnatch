@@ -13,17 +13,17 @@ SASnatch_hook = function(before, options, envir){
       SAScache.directory <<- makeSAScache()
 
       #get datasets to input and output
-      SASnatch.dsn <<- opts_current$get('SASnatch')
+      SASnatch.dsn <<- knitr:::opts_current$get('SASnatch')
 
       #First datasets are input second datasets are output
       SASnatch.input.dsn <<- SASnatch.dsn[1]
       SASnatch.output.dsn <<- SASnatch.dsn[2]
 
       #get the code from the chunk
-      SASnatch.code <<- opts_current$get('code')
+      SASnatch.code <<- knitr:::opts_current$get('code')
 
       #get the chunk name
-      SASnatch.label <<- opts_current$get('label')
+      SASnatch.label <<- knitr:::opts_current$get('label')
 
       #Create datasets for SAS to read
       SASnatch.code <<- SASnatch.before(SASnatch.dsn,SASnatch.code,SASnatch.chunk_name=SASnatch.label)

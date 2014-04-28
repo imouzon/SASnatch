@@ -2,7 +2,7 @@
 \alias{makeSAScache}
 \title{Create folder setup for SASnatch}
 \usage{
-makeSAScache(SASnatch.working.directory = NULL)
+makeSAScache(SASnatch.working.directory = "")
 }
 \arguments{
   \item{SASnatch.working.directory}{character value,
