@@ -7,8 +7,13 @@
 #' @examples
 #' submitSAScode()
 submitSAScode = function(SAScache.directory='',path_to_SAS.exe='',SASnatch.chunk_name=''){
-   if(SAScache.directory=='') SAScache.directory = getwd()
-   if(SASnatch.chunk_name =='') SASnathc.chunk_name = 'untitled-SAS-chunk'
+   if(SAScache.directory==''){
+      SAScache.directory = getwd()
+   }
+
+   if(SASnatch.chunk_name ==''){
+      SASnathc.chunk_name = 'untitled-SAS-chunk'
+   }
 
    SAS.submit.TEMPLATE = 'PATHTOSASEXE/SAS.EXE -SYSIN SASCACHE/SASnatch-chunk-name.sas'
    SAS.submit.TEMPLATE = gsub('SASCACHE',SAScache.directory,SAS.submit.TEMPLATE)
@@ -16,10 +21,11 @@ submitSAScode = function(SAScache.directory='',path_to_SAS.exe='',SASnatch.chunk
 
    #do you know where SAS is
    if(path_to_SAS.exe == ''){
-      return(0)
+      ret = 0
    }else{
       SAS.submit.TEMPLATE = gsub('PATHTOSASEXE',path_to_SAS.exe,SAS.submit.TEMPLATE)
       cat(SAS.submit.TEMPLATE)
-      return(1)
+      ret = 1
    }
+   return(ret)
 }
