@@ -8,7 +8,7 @@ SASnatch_hook(before, options, envir)
   \item{before}{logical, identifying before or after knitr
   chunk}
 
-  \item{options}{list, of options from knitr}
+  \item{options}{list, options from knitr}
 
   \item{envir,}{options from R}
 }
