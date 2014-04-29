@@ -5,7 +5,7 @@
 makeSAScache <- function(SASnatch.working.directory=''){
    #Get the cache path in R
    if(!(SASnatch.working.directory=='')){
-      SASnatch.R.cache.path = file.path(SASnatch.working.directory,'cache')
+      SASnatch.R.cache.path = SASnatch.working.directory
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
          SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
