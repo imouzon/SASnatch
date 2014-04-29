@@ -63,5 +63,5 @@ makeSAScache <- function(SASnatch.working.directory=''){
       message(message.2)
       dir.create(file.path(SASnatch.SAScache.path))
    }
-   return(expand.path(SASnatch.SAScache.path))
+   return(SASnatch.SAScache.path)
 }
