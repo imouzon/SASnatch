@@ -13,6 +13,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
          SASnatch.R.cache.path = file.path(getwd(),'cache')
       }
    }
+   SASnatch.R.cache.path = path.expand(SASnatch.R.cache.path)
 
    #terminals don't work - if the terminal server is being used, just set the 
    #cache path to the desktop and be done with it
