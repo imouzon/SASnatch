@@ -5,12 +5,6 @@
 #' @param envir, options from R
 #' @export
 SASnatch_hook = function(before, options, envir){
-   SASnatch.dsn = c('d1, d2','d3')
-   SASnatch.working.directory = '~/courses/stat585/SASnatch_examples/fake_project2'
-   SAScache.directory = '~/courses/stat585/SASnatch_examples/fake_project2/'
-   chunk.name = 'SASregs'
-   code = 'proc reg data = d; model y = x; out = dsnout p = yhat; run;'
-
    if(before){
       SAScache.directory <- makeSAScache(SASnatch.working.directory = SAScache.directory)
 
