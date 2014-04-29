@@ -18,7 +18,4 @@ read.SASnatch.object(chunk.name = "", SASresults.path = "",
 \description{
 Create folder setup for SASnatch
 }
-\examples{
-read.SASnatch.object('SASout','~/courses/stat585/lab1/')
-}
 

@@ -4,43 +4,65 @@
 #' @param options list, of options from knitr
 #' @param envir, options from R
 #' @export
-#' @examples 
-#' SASnatch_hook(TRUE,knitr_options,'r')
-
 SASnatch_hook = function(before, options, envir){
-   if(before){
-      #make folder SAScache for storing SAS output, store in SAScache.directory
-      SAScache.directory <<- makeSAScache()
+   SASnatch.dsn = c('d1, d2','d3')
+   SASnatch.working.directory = '~/courses/stat585/SASnatch_examples/fake_project2'
+   SAScache.directory = '~/courses/stat585/SASnatch_examples/fake_project2/'
+   chunk.name = 'SASregs'
+   code = 'proc reg data = d; model y = x; out = dsnout p = yhat; run;'
 
-      #get datasets to input and output
+   if(before){
+      SAScache.directory <- makeSAScache(SASnatch.working.directory = SAScache.directory)
+
+      #get datasets from SASnatch
       SASnatch.dsn <<- knitr:::opts_current$get('SASnatch')
 
-      #First datasets are input second datasets are output
-      SASnatch.input.dsn <<- SASnatch.dsn[1]
-      SASnatch.output.dsn <<- SASnatch.dsn[2]
+      #make sure we know what to call this chunk
+      if(!is.null(knitr:::opts_current$get('label'))){
+         chunk.name = knitr:::opts_current$get('label')
+      }
 
       #get the code from the chunk
-      SASnatch.code <<- knitr:::opts_current$get('code')
+      if(!is.null(knitr:::opts_current$get('code'))){
+         code = knitr:::opts_current$get('code')
+      }
 
-      #get the chunk name
-      SASnatch.label <<- knitr:::opts_current$get('label')
+      #determine which datasets go to SAS and which come from SAS 
+      R2SAS <<- SASnatch.dsn[1]; SAS2R <<- SASnatch.dsn[2]
 
-      #Create datasets for SAS to read
-      SASnatch.code <<- SASnatch.before(SASnatch.dsn,SASnatch.code,SASnatch.chunk_name=SASnatch.label)
+      #create SAS code
+      SAScode <<- createSAScode(SASnatch.working.directory = SAScache.directory,
+                  R2SAS = R2SAS,
+                  SAS2R = SAS2R,
+                  chunk.name=chunk.name,
+                  code = code)
 
-      #create .sas file in SAScache directory
-      SASnatch.write.sascode <<- paste('write(SASnatch.code,file="',SAScache.directory,'/',SASnatch.label,'.sas")',sep='')
-      eval(parse(text= SASnatch.write.sascode))
 
-      #run the SAS code in the given file directory
-      SASnatch.SASRUN <<- runSASnatch(path_to_SAS.EXE=path_to_SAS.EXE, SAScache.directory=SAScache.directory, SASnatch.label=SASnatch.label)
+      #create SAS file
+      SASfile <<- createSASfile(code=SAScode,
+                                SAScache.directory=SAScache.directory,
+                                chunk.name=chunk.name)
+
+      #create csv files from r datasets
+      R.WRITE.code <<- snatchR2SAS(SAScache.directory = SAScache.directory,
+                                   R2SAS = R2SAS,
+                                   chunk.name=chunk.name)
+
+      #Run the SAS code now that this the set up is there
+      SASnatch.SASRUN <<- runSASnatch(SAScache.directory=SAScache.directory,
+                                      SASnatch.label=chunk.name)
+
+      #BATCH submit the code
       system(SASnatch.SASRUN)
 
+      #read the SASnatch output
+      SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name,SASresults.path=SAScache.directory,SAS2R.names=SAS2R,SAS2R.type='.csv')
+
+      #run the SAS code in the given file directory
       SASnatch.S4 <<- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names=SASnatch.output.dsn)
    }else{
+      #Change the name of the S4 object
       eval(parse(text=paste(SASnatch.label,'.snatch <<- SASnatch.S4',sep='')))
    }
    return()
 }
-
-

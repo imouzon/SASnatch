@@ -2,7 +2,7 @@
 \alias{SASnatch.before}
 \title{functions for knitr hooks}
 \usage{
-SASnatch.before(dsn, SASnatch.code, SASnatch.chunk_name = "SASnatch")
+SASnatch.before(dsn = "", SASnatch.code = "", SASnatch.chunk_name = "")
 }
 \arguments{
   \item{dsn}{character vector, optional argument}

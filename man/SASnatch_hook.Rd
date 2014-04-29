@@ -15,7 +15,4 @@ SASnatch_hook(before, options, envir)
 \description{
 Hook function that guides SASnatch
 }
-\examples{
-SASnatch_hook(TRUE,knitr_options,'r')
-}
 

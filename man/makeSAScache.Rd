@@ -11,7 +11,4 @@ makeSAScache(SASnatch.working.directory = "")
 \description{
 Create folder setup for SASnatch
 }
-\examples{
-makeSAScache('~/courses/stat585/lab1/')
-}
 

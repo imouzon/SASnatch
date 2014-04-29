@@ -11,15 +11,14 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
    #First datasets are input second datasets are output
    SASnatch.dsn <- dsn
 
+   #get the chunk name
+   SASnatch.chunk.name <- S4name
+
    #get the code from the chunk
    SASnatch.code <- code
 
-   #get the chunk name
-   SASnatch.chunk_name <- S4name
-   SASnatch.label <- S4name
-
-   #First datasets are input second datasets are output
-   SASnatch.output.dsn <- dsn[2]
+   #determine which datasets go to SAS and which come from SAS 
+   R2SAS <<- SASnatch.dsn[1]; SAS2R <<- SASnatch.dsn[2]
 
    #terminals don't work - if the terminal server is being used, then
    #we need U:/ not /////iastat stuff
@@ -31,8 +30,7 @@ SnatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
 
    #make sure the directory you are wriitng to exists
    if(!file.exists(SAScache.directory)){
-      message.1 = "Creating folder 'SnatchSAS' in current working directory"
-      message(message.1)
+      message("Creating folder 'SnatchSAS' in current working directory")
       dir.create(file.path(getwd(),'SnatchSAS'))
    }
    

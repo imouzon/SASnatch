@@ -2,17 +2,15 @@
 #'
 #' @param SASnatch.working.directory character value, optional argument
 #' @export
-#' @examples
-#' makeSAScache('~/courses/stat585/lab1/')
 makeSAScache <- function(SASnatch.working.directory=''){
    #Get the cache path in R
    if(!(SASnatch.working.directory=='')){
-      SASnatch.R.cache.path = paste(SASnatch.working.directory,sep='/')
+      SASnatch.R.cache.path = paste(SASnatch.working.directory,'cache',sep='/')
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
          SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
       }else{
-         SASnatch.R.cache.path = paste(getwd(),sep='/')
+         SASnatch.R.cache.path = paste(getwd(),'cache',sep='/')
       }
    }
 
@@ -27,7 +25,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
    SASnatch.R.cache.parent = unlist(strsplit(SASnatch.R.cache.path,'/'))
    SASnatch.R.cache.folder = SASnatch.R.cache.parent[length(SASnatch.R.cache.parent)]
    SASnatch.R.cache.parent = SASnatch.R.cache.parent[1:(length(SASnatch.R.cache.parent)-1)]
-   SASnatch.R.cache.parent = paste(SASnatch.R.cache.parent,'/')
+   SASnatch.R.cache.parent = paste(SASnatch.R.cache.parent,collapse='/')
 
    #At this point:
    #SASnatch.R.cache.path is knitr path to cache folder
@@ -38,8 +36,9 @@ makeSAScache <- function(SASnatch.working.directory=''){
    if(!file.exists(SASnatch.R.cache.path)){
       #message.1 = paste("Creating folder '",SASnatch.R.cache.folder[1],"' in directory",SAScache.R.cache.parent,sep='')
       #message(message.1)
-      dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.parent))
+      dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.folder))
    }
+
 
    #put the SAScache beside knitrs cache
    SAScache.beside.Rcache = TRUE

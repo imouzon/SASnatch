@@ -5,9 +5,6 @@
 #' @param SAS2R.names character vector, optional argument
 #' @param SAS2R.type character value, optional argument
 #' @export
-#' @examples
-#' read.SASnatch.object('SASout','~/courses/stat585/lab1/')
-
 read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names='',SAS2R.type='.csv'){
    #get the SAScache.directory
    if(SASresults.path == ''){
