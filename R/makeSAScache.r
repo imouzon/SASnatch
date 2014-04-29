@@ -58,8 +58,8 @@ makeSAScache <- function(SASnatch.working.directory=''){
 
    #check for the existence of the SAScache directory
    if(!file.exists(SASnatch.SAScache.path)){
-      message.2 = paste("Creating folder 'SAScache' in directory",SAScache.R.cache.parent)
-      message(message.2)
+      #message.2 = paste("Creating folder 'SAScache' in directory",SAScache.R.cache.parent)
+      #message(message.2)
       dir.create(file.path(out.directory,'SAScache'))
    }
    return(SASnatch.SAScache.path)
