@@ -45,9 +45,9 @@ makeSAScache <- function(SASnatch.working.directory=''){
    #check for the existence of the SAS cache directory under the knitr out directory
    SAScache.directory = paste(out.directory,'SAScache',sep='/')
    if(!file.exists(SAScache.directory)){
-      message.2 = paste("Creating folder 'SAScache' in directory",paste(SASnatch.working.directory,'out',sep='/'))
+      message.2 = paste("Creating folder 'SAScache' in directory",out.directory)
       message(message.2)
-      dir.create(file.path(SASnatch.working.directory,'out/SAScache'))
+      dir.create(file.path(out.directory,'SAScache'))
    }
    return(SAScache.directory)
 }
