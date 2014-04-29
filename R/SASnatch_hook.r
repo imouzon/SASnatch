@@ -6,7 +6,7 @@
 #' @export
 SASnatch_hook = function(before, options, envir){
    if(before){
-      SAScache.directory <- makeSAScache(SASnatch.working.directory = SAScache.directory)
+      SAScache.directory <- makeSAScache()
 
       #get datasets from SASnatch
       SASnatch.dsn <<- knitr:::opts_current$get('SASnatch')
