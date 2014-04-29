@@ -26,12 +26,13 @@ makeSAScache <- function(SASnatch.working.directory=''){
       SASnatch.R.cache.path = paste('U:',paste(SASnatch.R.cache.path[4:length(SASnatch.R.cache.path)],collapse='/'),sep='/')
    }
 
-   #expanded.SASnatch.R.cache.path = unlist(strsplit(SASnatch.R.cache.path,c('/','\\\\')))
-   #SASnatch.working.directory = paste(expanded.SASnatch.R.cache.path[1:(which(expanded.SASnatch.R.cache.path == 'out')-1)],collapse='/')
+   #We know that knitr puts R cache in the folder SASnatch.R.cache.path
    SASnatch.working.directory = SASnatch.R.cache.path
 
+   #never use the out/SAScache setting
    use.out.SAScache = FALSE
    if(use.out.SAScache == TRUE){
+      #put an out directory under the SASnatch.working.directory
       out.directory = paste(SASnatch.working.directory,'out',sep='/')
       if(!file.exists(out.directory)){
          message.1 = paste("Creating folder 'out' in directory",SASnatch.working.directory)
@@ -39,15 +40,29 @@ makeSAScache <- function(SASnatch.working.directory=''){
          dir.create(file.path(SASnatch.working.directory,'out'))
       }
    }else{
+      #just use the SASnatch.working.directory
       out.directory = SASnatch.working.directory
    }
 
    #check for the existence of the SAS cache directory under the knitr out directory
-   SAScache.directory = paste(out.directory,'SAScache',sep='/')
-   if(!file.exists(SAScache.directory)){
-      message.2 = paste("Creating folder 'SAScache' in directory",out.directory)
-      message(message.2)
-      dir.create(file.path(out.directory,'SAScache'))
+   SAScache.beside.Rcache = TRUE
+   if(!SAScache.beside.Rcache){
+      #this branch puts the SAScache underneath the outdirectory
+      SAScache.directory = paste(out.directory,'SAScache',sep='/')
+      if(!file.exists(SAScache.directory)){
+         message.2 = paste("Creating folder 'SAScache' in directory",out.directory)
+         message(message.2)
+         dir.create(file.path(out.directory,'SAScache'))
+      }
+   }else{
+      out.directory = unlist(strsplit(out.directory,'/'))
+      out.directory = paste(out.directory[1:(length(out.directory)-1)],sep='/')
+      SAScache.directory = paste(out.directory,'SAScache','/')
+      if(!file.exists(SAScache.directory)){
+         message.2 = paste("Creating folder 'SAScache' in directory",out.directory)
+         message(message.2)
+         dir.create(file.path(out.directory,'SAScache'))
+      }
    }
    return(SAScache.directory)
 }
