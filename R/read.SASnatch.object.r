@@ -5,7 +5,7 @@
 #' @param SAS2R.names character vector, optional argument
 #' @param SAS2R.type character value, optional argument
 #' @export
-read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names='',SAS2R.type='.csv'){
+read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',SAS2R.type='.csv'){
    #get the SAScache.directory
    if(SASresults.path == ''){
       SAScache.directory = makeSAScache()
@@ -50,6 +50,7 @@ read.SASnatch.object<- function (chunk.name='',SASresults.path='',SAS2R.names=''
       log.file = ''
    }
    
+   #Store the SASnatch object
    SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
    return(SASnatch.object)
 }

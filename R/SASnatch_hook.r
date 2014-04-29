@@ -1,7 +1,7 @@
 #' Hook function that guides SASnatch
 #'
 #' @param before logical, identifying before or after knitr chunk
-#' @param options list, of options from knitr
+#' @param options list, options from knitr
 #' @param envir, options from R
 #' @export
 SASnatch_hook = function(before, options, envir){
@@ -9,7 +9,9 @@ SASnatch_hook = function(before, options, envir){
       SAScache.directory <- makeSAScache()
 
       #get datasets from SASnatch
-      SASnatch.dsn <<- knitr:::opts_current$get('SASnatch')
+      if(!is.null(knitr:::opts_current$get('SASnatch'))){
+         SASnatch.dsn <<- knitr:::opts_current$get('SASnatch')
+      }
 
       #make sure we know what to call this chunk
       if(!is.null(knitr:::opts_current$get('label'))){
@@ -47,16 +49,19 @@ SASnatch_hook = function(before, options, envir){
                                       SASnatch.label=chunk.name)
 
       #BATCH submit the code
-      #system(SASnatch.SASRUN)
+      SASRUN = TRUE
+      if(SASRUN == TRUE){
+         system(SASnatch.SASRUN)
+      }
 
       #read the SASnatch output
-      SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name,SASresults.path=SAScache.directory,SAS2R.names=SAS2R,SAS2R.type='.csv')
-
-      #run the SAS code in the given file directory
-      SASnatch.S4 <<- read.SASnatch.object(chunk.name=SASnatch.label,SAS2R.names=SASnatch.output.dsn)
+      SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name,
+                                           SASresults.path=SAScache.directory,
+                                           SAS2R.names=SAS2R,SAS2R.type='.csv')
    }else{
       #Change the name of the S4 object
       eval(parse(text=paste(SASnatch.label,'.snatch <<- SASnatch.S4',sep='')))
    }
+   message('SASnatch_hook has run successfully')
    return()
 }

@@ -2,17 +2,21 @@
 #'
 #' @param SASnatch.working.directory character value, optional argument
 #' @export
+makeSAScache(SASnatch.working.directory='')
 makeSAScache <- function(SASnatch.working.directory=''){
    #Get the cache path in R
-   if(!(SASnatch.working.directory=='')){
+   if(SASnatch.working.directory != ''){
+      message.1 = 'SASnatch.working.directory not set in chunk'
+      message(message.1)
       SASnatch.R.cache.path = SASnatch.working.directory
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
+         message.1 = 'Setting SASnatch.R.cache.path to knitr cache path'
+         message(message.1)
          SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
-         if(SASnatch.R.cache.path == 'cache/'){
-            SASnatch.R.cache.path = file.path(getwd(),'cache')
-         }
       }else{
+         message.1 = 'Setting SASnatch.R.cache.path to working directory'
+         message(message.1)
          SASnatch.R.cache.path = file.path(getwd(),'cache')
       }
    }
@@ -37,13 +41,13 @@ makeSAScache <- function(SASnatch.working.directory=''){
 
    #check the existence of the Rcache
    if(!file.exists(SASnatch.R.cache.path)){
-      message.1 = paste("Creating folder '",SASnatch.R.cache.folder[1],"' in directory",SASnatch.R.cache.parent,sep='')
-      message(message.1)
+      message.2 = paste("Creating folder '",SASnatch.R.cache.folder[1],"' in directory",SASnatch.R.cache.parent,sep='')
+      message(message.2)
       dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.folder))
    }
 
    #put the SAScache beside knitrs cache
-   SAScache.beside.Rcache = TRUE
+   SAScache.beside.Rcache = FALSE
    if(SAScache.beside.Rcache){
       SASnatch.SAScache.path <- gsub('cache','SAScache',SASnatch.R.cache.parent)
    }else{
@@ -59,9 +63,11 @@ makeSAScache <- function(SASnatch.working.directory=''){
 
    #check for the existence of the SAScache directory
    if(!file.exists(SASnatch.SAScache.path)){
-      message.2 = paste("Creating folder 'SAScache' in directory",SASnatch.R.cache.parent)
-      message(message.2)
+      message.3 = paste("Creating folder 'SAScache' in directory",SASnatch.R.cache.parent)
+      message(message.3)
       dir.create(file.path(SASnatch.SAScache.path))
    }
+
+   #return the full path to the SAScache
    return(SASnatch.SAScache.path)
 }
