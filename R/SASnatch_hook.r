@@ -45,7 +45,8 @@ SASnatch_hook = function(before, options, envir){
                                    chunk.name=chunk.name)
 
       #Run the SAS code now that this the set up is there
-      SASnatch.SASRUN <<- runSASnatch(SAScache.directory=SAScache.directory,
+      SASnatch.SASRUN <<- runSASnatch(path_to_SAS.EXE = path_to_SAS.EXE,
+                                      SAScache.directory=SAScache.directory,
                                       SASnatch.label=chunk.name)
 
       #BATCH submit the code
@@ -58,5 +59,5 @@ SASnatch_hook = function(before, options, envir){
       #eval(parse(text=paste(SASnatch.label,'.snatch <<- SASnatch.S4',sep='')))
    }
    message('SASnatch_hook has run successfully')
-   return()
+   return(1)
 }
