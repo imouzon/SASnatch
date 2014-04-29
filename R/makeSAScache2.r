@@ -8,7 +8,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
       SASnatch.R.cache.path = SASnatch.working.directory
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
-         SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
+         SASnatch.R.cache.path = expand.path(knitr:::opts_current$get('cache.path'))
       }else{
          SASnatch.R.cache.path = file.path(getwd(),'cache')
       }
@@ -39,16 +39,17 @@ makeSAScache <- function(SASnatch.working.directory=''){
       message(message.1)
       dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.folder))
    }
-   
- 
+
+
    #put the SAScache beside knitrs cache
    SAScache.beside.Rcache = TRUE
-   if(SAScache.beside.Rcache){
-      SASnatch.SAScache.path <- gsub('cache','SAScache',SASnatch.R.cache.parent)
+   if(!SAScache.beside.Rcache){
+      SASnatch.SAScache.parent <- SASnatch.R.cache.parent
    }else{
-      SASnatch.SAScache.path <- file.path(SASnatch.R.cache.path,'SAScache')
+      SASnatch.SAScache.parent <- SASnatch.R.cache.path
    }
 
+   SASnatch.SAScache.path <- file.path(SASnatch.SAScache.parent,'SAScache')
    SASnatch.SAScache.folder <- 'SAScache'
    
    #At this point:
@@ -60,7 +61,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
    if(!file.exists(SASnatch.SAScache.path)){
       message.2 = paste("Creating folder 'SAScache' in directory",SASnatch.R.cache.parent)
       message(message.2)
-      dir.create(file.path(SASnatch.SAScache.path))
+      dir.create(file.path(SASnatch.SAScache.parent,'SAScache'))
    }
-   return(expand.path(SASnatch.SAScache.path))
+   return(SASnatch.SAScache.path)
 }
