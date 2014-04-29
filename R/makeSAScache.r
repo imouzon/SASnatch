@@ -2,15 +2,16 @@
 #'
 #' @param SASnatch.working.directory character value, optional argument
 #' @export
+SASnatch.working.directory='~/courses/stat585/SASnatch_examples/fake_project2/'
 makeSAScache <- function(SASnatch.working.directory=''){
    #Get the cache path in R
    if(!(SASnatch.working.directory=='')){
-      SASnatch.R.cache.path = paste(SASnatch.working.directory,'cache',sep='/')
+      SASnatch.R.cache.path = paste(SASnatch.working.directory,'cache',sep='')
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
          SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
       }else{
-         SASnatch.R.cache.path = paste(getwd(),'cache',sep='/')
+         SASnatch.R.cache.path = paste(getwd(),'cache',sep='')
       }
    }
 
@@ -43,12 +44,12 @@ makeSAScache <- function(SASnatch.working.directory=''){
    #put the SAScache beside knitrs cache
    SAScache.beside.Rcache = TRUE
    if(SAScache.beside.Rcache){
-      SASnatch.SAScache.parent = SASnatch.R.cache.parent
+      SASnatch.SAScache.parent <<- SASnatch.R.cache.parent
    }else{
-      SASnatch.SAScache.parent = SASnatch.R.cache.path
+      SASnatch.SAScache.parent <<- SASnatch.R.cache.path
    }
-   SASnatch.SAScache.path = paste(SASnatch.SAScache.parent,'SAScache',sep='/')
-   SASnatch.SAScache.folder = 'SAScache'
+   SASnatch.SAScache.path <<- paste(SASnatch.SAScache.parent,'SAScache',sep='/')
+   SASnatch.SAScache.folder <<- 'SAScache'
    
    #At this point:
    #SASnatch.SAScache.path is full path to SAScache folder
