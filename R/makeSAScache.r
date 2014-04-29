@@ -43,7 +43,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
 
    #put the SAScache beside knitrs cache
    SAScache.beside.Rcache = TRUE
-   if(!SAScache.beside.Rcache){
+   if(SAScache.beside.Rcache){
       SASnatch.SAScache.parent = SASnatch.R.cache.parent
    }else{
       SASnatch.SAScache.parent = SASnatch.R.cache.folder
