@@ -49,18 +49,13 @@ SASnatch_hook = function(before, options, envir){
                                       SASnatch.label=chunk.name)
 
       #BATCH submit the code
-      SASRUN = TRUE
-      if(SASRUN == TRUE){
-         system(SASnatch.SASRUN)
-      }
+      system(SASnatch.SASRUN)
 
       #read the SASnatch output
-      SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name,
-                                           SASresults.path=SAScache.directory,
-                                           SAS2R.names=SAS2R,SAS2R.type='.csv')
+      #SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name, SASresults.path=SAScache.directory, SAS2R.names=SAS2R,SAS2R.type='.csv')
    }else{
       #Change the name of the S4 object
-      eval(parse(text=paste(SASnatch.label,'.snatch <<- SASnatch.S4',sep='')))
+      #eval(parse(text=paste(SASnatch.label,'.snatch <<- SASnatch.S4',sep='')))
    }
    message('SASnatch_hook has run successfully')
    return()
