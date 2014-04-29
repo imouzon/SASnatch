@@ -36,8 +36,8 @@ makeSAScache <- function(SASnatch.working.directory=''){
 
    #check the existence of the Rcache
    if(!file.exists(SASnatch.R.cache.path)){
-      message.1 = paste("Creating folder '",SASnatch.R.cache.folder,"' in directory",SAScache.R.cache.parent)
-      message(message.1)
+      #message.1 = paste("Creating folder '",SASnatch.R.cache.folder[1],"' in directory",SAScache.R.cache.parent,sep='')
+      #message(message.1)
       dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.parent))
    }
 
