@@ -58,7 +58,7 @@ SASnatch_hook = function(before, options, envir){
                                            SAS2R.names=SAS2R,SAS2R.type='.csv')
    }else{
       #Change the name of the S4 object
-      eval(parse(text=paste(SASnatch.label,'.snatch <<- SASnatch.S4',sep='')))
+      eval(parse(text=paste(chunk.name,'.snatch <<- SASnatch.S4',sep='')))
    }
    message('SASnatch_hook has run successfully')
    return(1)
