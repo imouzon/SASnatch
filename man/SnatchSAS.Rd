@@ -1,8 +1,8 @@
-\name{SnatchSAS}
-\alias{SnatchSAS}
+\name{snatchSAS}
+\alias{snatchSAS}
 \title{call SAS without knitr}
 \usage{
-SnatchSAS(dsn, code, S4name = "SnatchSAScode")
+snatchSAS(dsn, code, S4name = "SnatchSAScode")
 }
 \arguments{
   \item{dsn}{character vector, optional argument}

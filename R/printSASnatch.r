@@ -13,11 +13,29 @@ printSASnatch <- function(SASnatch=list(),type='R'){
       }
    }
 
+   if(type == 'rawHTML'){
+      for(i in 1:length(SASnatch@results@rawHTML)){
+         #Footer templates
+         for(j in 1:length(SASnatch@results@rawHTML[[i]])){
+            print(SASnatch@results@rawHTML[[i]][[j]])
+         }
+      }
+   }
+
    if(type == 'TeX'){
       for(i in 1:length(SASnatch@results@TeX)){
          #Footer templates
          for(j in 1:length(SASnatch@results@TeX[[i]])){
             print(SASnatch@results@TeX[[i]][[j]])
+         }
+      }
+   }
+
+   if(type == 'rawTeX'){
+      for(i in 1:length(SASnatch@results@rawTeX)){
+         #Footer templates
+         for(j in 1:length(SASnatch@results@rawTeX[[i]])){
+            print(SASnatch@results@rawTeX[[i]][[j]])
          }
       }
    }
