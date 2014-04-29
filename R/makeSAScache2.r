@@ -2,7 +2,7 @@
 #'
 #' @param SASnatch.working.directory character value, optional argument
 #' @export
-makeSAScache <- function(SASnatch.working.directory=''){
+makeSAScache2 <- function(SASnatch.working.directory=''){
    #Get the cache path in R
    if(!(SASnatch.working.directory=='')){
       SASnatch.R.cache.path = SASnatch.working.directory
