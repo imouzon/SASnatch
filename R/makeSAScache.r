@@ -46,7 +46,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
    if(SAScache.beside.Rcache){
       SASnatch.SAScache.parent = SASnatch.R.cache.parent
    }else{
-      SASnatch.SAScache.parent = SASnatch.R.cache.folder
+      SASnatch.SAScache.parent = SASnatch.R.cache.path
    }
    SASnatch.SAScache.path = paste(SASnatch.SAScache.parent,'SAScache',sep='/')
    SASnatch.SAScache.folder = 'SAScache'
