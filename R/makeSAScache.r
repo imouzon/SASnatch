@@ -39,11 +39,11 @@ makeSAScache <- function(SASnatch.working.directory=''){
    #SASnatch.R.cache.folder the name of knitr cache folder
 
    #check the existence of the Rcache
-   if(!file.exists(SASnatch.R.cache.path)){
-      message.2 = paste("Creating folder '",SASnatch.R.cache.folder[1],"' in directory",SASnatch.R.cache.parent,sep='')
-      message(message.2)
-      dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.folder))
-   }
+   #if(!file.exists(SASnatch.R.cache.path)){
+   #   message.2 = paste("Creating folder '",SASnatch.R.cache.folder[1],"' in directory",SASnatch.R.cache.parent,sep='')
+   #   message(message.2)
+   #   dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.folder))
+   #}
 
    #put the SAScache beside knitrs cache
    SAScache.beside.Rcache = FALSE
