@@ -2,9 +2,13 @@
 #'
 #' @param SASnatch.S4 SASnatch object, optional argument
 #' @param type character value, optional argument
+#' @param items numeric vector, optional argument
 #' @export
-printSASnatch <- function(SASnatch=list(),type='R'){
+printSASnatch <- function(SASnatch=list(),type='R',items = 0){
+   
    if(type == 'R'){
+      if(items == 0){items = length(SASnatch@results@R)}
+
       for(i in 1:length(SASnatch@results@R)){
          #Footer templates
          for(j in 1:length(SASnatch@results@R[[i]])){
@@ -13,8 +17,19 @@ printSASnatch <- function(SASnatch=list(),type='R'){
       }
    }
 
+   if(type == 'HTML'){
+      if(items == 0){items = length(SASnatch@results@HTML)}
+      for(i in items){
+         #Footer templates
+         for(j in 1:length(SASnatch@results@HTML[[i]])){
+            print(SASnatch@results@HTML[[i]][[j]])
+         }
+      }
+   }
+
    if(type == 'rawHTML'){
-      for(i in 1:length(SASnatch@results@rawHTML)){
+      if(items == 0){items = length(SASnatch@results@rawHTML)}
+      for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@rawHTML[[i]])){
             print(SASnatch@results@rawHTML[[i]][[j]])
@@ -23,7 +38,8 @@ printSASnatch <- function(SASnatch=list(),type='R'){
    }
 
    if(type == 'TeX'){
-      for(i in 1:length(SASnatch@results@TeX)){
+      if(items == 0){items = length(SASnatch@results@TeX)}
+      for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@TeX[[i]])){
             print(SASnatch@results@TeX[[i]][[j]])
@@ -32,19 +48,11 @@ printSASnatch <- function(SASnatch=list(),type='R'){
    }
 
    if(type == 'rawTeX'){
-      for(i in 1:length(SASnatch@results@rawTeX)){
+      if(items == 0){items = length(SASnatch@results@rawTeX)}
+      for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@rawTeX[[i]])){
             print(SASnatch@results@rawTeX[[i]][[j]])
-         }
-      }
-   }
-
-   if(type == 'HTML'){
-      for(i in 1:length(SASnatch@results@HTML)){
-         #Footer templates
-         for(j in 1:length(SASnatch@results@HTML[[i]])){
-            print(SASnatch@results@HTML[[i]][[j]])
          }
       }
    }
