@@ -9,11 +9,13 @@ makeSAScache <- function(SASnatch.working.directory=''){
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
          SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
+         if(SASnatch.R.cache.path == 'cache/'){
+            SASnatch.R.cache.path = file.path(getwd(),'cache')
+         }
       }else{
          SASnatch.R.cache.path = file.path(getwd(),'cache')
       }
    }
-   SASnatch.R.cache.path = path.expand(SASnatch.R.cache.path)
 
    #terminals don't work - if the terminal server is being used, just set the 
    #cache path to the desktop and be done with it
@@ -39,8 +41,7 @@ makeSAScache <- function(SASnatch.working.directory=''){
       message(message.1)
       dir.create(file.path(SASnatch.R.cache.parent,SASnatch.R.cache.folder))
    }
-   
- 
+
    #put the SAScache beside knitrs cache
    SAScache.beside.Rcache = TRUE
    if(SAScache.beside.Rcache){
