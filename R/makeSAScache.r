@@ -7,16 +7,19 @@
 
 makeSAScache <- function(SASnatch.working.directory=''){
    #Get the cache pathe in R
+   rm(list=ls())
+   SASnatch.working.directory=''
    if(!(SASnatch.working.directory=='')){
-      SASnatch.R.cache.path = paste(SASnatch.working.directory,'out/cache',sep='/')
+      SASnatch.R.cache.path = paste(SASnatch.working.directory,sep='/')
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
          SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
       }else{
-         SASnatch.R.cache.path = paste(getwd(),'out/cache',sep='/')
+         SASnatch.R.cache.path = paste(getwd(),sep='/')
       }
    }
 
+   SASnatch.R.cache.path
    #terminals don't work - if the terminal server is being used, just set the 
    #cache path to the desktop and be done with it
    if(grepl('iastate',SASnatch.R.cache.path)){
