@@ -47,7 +47,7 @@ SASnatch_hook = function(before, options, envir){
                                       SASnatch.label=chunk.name)
 
       #BATCH submit the code
-      system(SASnatch.SASRUN)
+      #system(SASnatch.SASRUN)
 
       #read the SASnatch output
       SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name,SASresults.path=SAScache.directory,SAS2R.names=SAS2R,SAS2R.type='.csv')
