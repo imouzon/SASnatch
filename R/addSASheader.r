@@ -29,7 +29,8 @@ addSASheader <- function(SAScache.directory='',chunk.name='unlabeled-SASnatch-ch
    SAScode.ODS.HTML.TEMPLATE = 'ods html body = "SASCACHE/SASnatch-chunk-name.html" NEWFILE = OUTPUT;'
 
    #ODS LaTeX template
-   SAScode.ODS.TEX.TEMPLATE = 'ods tagsets.tablesonlylatex file="SASCACHE/SASnatch-chunk-name.tex" (notop nobot) NEWFILE = table;'
+   #SAScode.ODS.TEX.TEMPLATE = 'ods tagsets.tablesonlylatex file="SASCACHE/SASnatch-chunk-name.tex" (notop nobot) NEWFILE = table;'
+   SAScode.ODS.TEX.TEMPLATE = 'ods tagsets.simplelatex file="SASCACHE/SASnatch-chunk-name.tex" (notop nobot) NEWFILE = table;'
 
    #fix the SASCACHE in the templates
    SAScode.LOG.TEMPLATE = gsub('SASCACHE',SAScache.directory, SAScode.LOG.TEMPLATE)
