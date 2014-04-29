@@ -35,7 +35,7 @@ read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',
       output2R <- new('snatchOutput',SAS2R=output.sets)
    }else{
       #no output datasets
-      output2R <- new('snathcOutput', list(NULL))
+      output2R <- new('snatchOutput', list(NULL))
    }
 
    #log files imported into R
@@ -49,6 +49,10 @@ read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',
       #log.file <- paste(scan(file=log.files,sep='\n',what='character',quiet=TRUE),sep='\n')
       log.file = ''
    }
+   if(file.exists(paste(chunk.name),'.log',sep='')){
+      log.file = scan(paste(chunk.name,'.log',sep=''), what='character')
+   }
+
    
    #Store the SASnatch object
    SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
