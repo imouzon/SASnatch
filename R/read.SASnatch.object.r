@@ -49,9 +49,10 @@ read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',
       #log.file <- paste(scan(file=log.files,sep='\n',what='character',quiet=TRUE),sep='\n')
       log.file = ''
    }
-   if(file.exists(paste(chunk.name),'.log',sep='')){
-      log.file = scan(paste(chunk.name,'.log',sep=''), what='character')
-   }
+
+   #if(file.exists(paste(chunk.name),'.log',sep='')){
+   #   log.file = scan(paste(chunk.name,'.log',sep=''), what='character')
+   #}
 
    
    #Store the SASnatch object
