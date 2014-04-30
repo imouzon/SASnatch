@@ -37,7 +37,7 @@ read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',
       output2R <- new('snatchOutput',SAS2R=output.sets)
    }else{
       #no output datasets
-      output2R <- new('snatchOutput', list(NULL))
+      output2R <- new('snatchOutput', SAS2R = list(NULL))
    }
 
    #log files imported into R
