@@ -18,7 +18,7 @@ printSASnatch <- function(SASnatch=list(),type='R',items = 0){
 
 
    if(type == 'HTML'){
-      if(length(items) == 1 & items == 0){items = 1:length(SASnatch@results@HTML)}
+      if(length(items) == 1 & items[1] == 0){items = 1:length(SASnatch@results@HTML)}
       for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@HTML[[i]])){
@@ -28,7 +28,7 @@ printSASnatch <- function(SASnatch=list(),type='R',items = 0){
    }
 
    if(type == 'rawHTML'){
-      if(length(items) == 1 & items == 0){items = 1:length(SASnatch@results@rawHTML)}
+      if(length(items) == 1 & items[1] == 0){items = 1:length(SASnatch@results@rawHTML)}
       for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@rawHTML[[i]])){
@@ -38,8 +38,8 @@ printSASnatch <- function(SASnatch=list(),type='R',items = 0){
    }
 
    if(type == 'TeX'){
-      if(length(items) == 1 & items == 0){items = 1:length(SASnatch@results@TeX)}
-      for(i in 1:items){
+      if(length(items) == 1 & items[1] == 0){items = 1:length(SASnatch@results@TeX)}
+      for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@TeX[[i]])){
             print(SASnatch@results@TeX[[i]][[j]])
@@ -48,7 +48,7 @@ printSASnatch <- function(SASnatch=list(),type='R',items = 0){
    }
 
    if(type == 'rawTeX'){
-      if(length(items) == 1 & items == 0){items = 1:length(SASnatch@results@rawTeX)}
+      if(length(items) == 1 & items[1] == 0){items = 1:length(SASnatch@results@rawTeX)}
       for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@rawTeX[[i]])){
