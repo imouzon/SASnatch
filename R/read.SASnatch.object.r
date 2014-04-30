@@ -26,6 +26,7 @@ read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',
    code.file <- paste(scan(file=code.files,sep='\n',what='character',quiet=TRUE),collapse='\n')
 
    #results in a dataset (default to CSV)
+   #if(SAS2R.names[1] != ''){
    if(SAS2R.names[1] != '' & !is.null(SAS2R.names) & !is.na(SAS2R.names)){
       #output datasets stored in the SAScache folder
       n.output <- length(files.cache)
