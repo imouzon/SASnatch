@@ -58,5 +58,7 @@ SASnatch_hook = function(before, options, envir){
       eval(parse(text=paste(chunk.name,'.snatch <<- SASnatch.S4',sep='')))
    }else{
       message('SASnatch_hook has run successfully')
+      cat(SASnatch.S4@code)
+
    }
 }
