@@ -7,7 +7,7 @@
 printSASnatch <- function(SASnatch=list(),type='R',items = 0){
    
    if(type == 'R'){
-      if(length(items) == 1 & items == 0){items = 1:length(SASnatch@results@R)}
+      if(length(items) == 1 & items[1] == 0){items = 1:length(SASnatch@results@R)}
       for(i in items){
          #Footer templates
          for(j in 1:length(SASnatch@results@R[[i]])){
