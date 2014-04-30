@@ -20,7 +20,7 @@ SASnatch_hook = function(before, options, envir){
 
       #get the code from the chunk
       if(!is.null(knitr:::opts_current$get('code'))){
-         code = paste(knitr:::opts_current$get('code'),collapse = '\n')
+         rawcode = paste(knitr:::opts_current$get('code'),collapse = '\n')
       }
 
       #determine which datasets go to SAS and which come from SAS 
@@ -31,7 +31,7 @@ SASnatch_hook = function(before, options, envir){
                   R2SAS = R2SAS,
                   SAS2R = SAS2R,
                   chunk.name=chunk.name,
-                  code = code)
+                  code = rawcode)
 
 
       #create SAS file
@@ -53,12 +53,12 @@ SASnatch_hook = function(before, options, envir){
       system(SASnatch.SASRUN)
 
       #read the SASnatch output
-      SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name, SASresults.path=SAScache.directory, SAS2R.names=SAS2R,SAS2R.type='.csv')
+      SASnatch.S4 <<- read.SASnatch.object(chunk.name=chunk.name, rawcode=rawcode,SASresults.path=SAScache.directory, SAS2R.names=SAS2R,SAS2R.type='.csv')
       #Change the name of the S4 object
       eval(parse(text=paste(chunk.name,'.snatch <<- SASnatch.S4',sep='')))
+      cat(SASnatch.S4@code)
    }else{
       message('SASnatch_hook has run successfully')
-      cat(SASnatch.S4@code)
 
    }
 }

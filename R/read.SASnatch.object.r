@@ -1,11 +1,12 @@
 #' Create folder setup for SASnatch
 #'
 #' @param chunk.name character value, optional argument
+#' @param rawcode character value, optional argument
 #' @param SASresults.path character value, optional argument
 #' @param SAS2R.names character vector, optional argument
 #' @param SAS2R.type character value, optional argument
 #' @export
-read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',SAS2R.type='.csv'){
+read.SASnatch.object<- function(chunk.name='',rawcode = '', SASresults.path='',SAS2R.names='',SAS2R.type='.csv'){
    #get the SAScache.directory
    if(SASresults.path == ''){
       SAScache.directory = makeSAScache()
@@ -58,6 +59,6 @@ read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',
 
    
    #Store the SASnatch object
-   SASnatch.object <- new('SASnatch',code = code.file, results = SASnatch.results, out = output2R, log=log.file)
+   SASnatch.object <- new('SASnatch',code = code.file, rawcode = rawcode, results = SASnatch.results, out = output2R, log=log.file)
    return(SASnatch.object)
 }

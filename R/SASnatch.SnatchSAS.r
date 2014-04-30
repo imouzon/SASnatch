@@ -17,6 +17,7 @@ snatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
 
    #get the code from input
    SASnatch.code <- code
+   rawcode = code
 
    #determine which datasets go to SAS and which come from SAS 
    R2SAS <<- SASnatch.dsn[1]; SAS2R <<- SASnatch.dsn[2]
@@ -65,8 +66,10 @@ snatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
 
    #read the SASnatch output
    SASnatch.S4 <- read.SASnatch.object(chunk.name=chunk.name, 
-                                          SASresults.path=SAScache.directory, 
-                                          SAS2R.names=SAS2R,SAS2R.type='.csv')
+                                       rawcode = rawcode,
+                                       SASresults.path=SAScache.directory, 
+                                       SAS2R.names=SAS2R,SAS2R.type='.csv')
+
    #Change the name of the S4 object
    #eval(parse(text=paste(chunk.name,'.snatch <<- SASnatch.S4',sep='')))
    return(SASnatch.S4)

@@ -11,6 +11,7 @@ setClass('snatchResults',representation(HTML = 'list', rawHTML = 'list', TeX = '
 #The actual snatch object
 setClass('SASnatch', 
          representation(code = 'character',
+                        rawcode = 'character',
                         results= 'snatchResults',
                         out = 'snatchOutput',   
                         log = 'character'),
