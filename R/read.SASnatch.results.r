@@ -40,7 +40,7 @@ read.SASnatch.results<- function (chunk.name='',SASresults.path = '',SAS2R.names
    r.results <- lapply(1:length(html.files),function(i) readHTMLTable(html.files[i]))
 
    #convert the r.results to tex files
-   tex.results <- lapply(1:length(true.results), function(i) lapply(1:length(r.results[[i]]), function(j) xtable(r.results[[i]][[j]])))
+   tex.results <- lapply(1:length(true.results), function(i) lapply(1:length(r.results[[i]]), function(j) xtable(r.results[[i]][[j]],table.placement='H')))
 
    #convert the r.results to html files
    html.results <- lapply(1:length(true.results), function(i) lapply(1:length(r.results[[i]]), function(j) xtable(r.results[[i]][[j]],type='html')))
