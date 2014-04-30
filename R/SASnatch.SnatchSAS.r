@@ -13,6 +13,7 @@ snatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
 
    #get the chunk name
    SASnatch.chunk.name <- S4name
+   chunk.name <- S4name
 
    #get the code from input
    SASnatch.code <- code
@@ -67,6 +68,6 @@ snatchSAS <- function(dsn,code,S4name='SnatchSAScode'){
                                           SASresults.path=SAScache.directory, 
                                           SAS2R.names=SAS2R,SAS2R.type='.csv')
    #Change the name of the S4 object
-   eval(parse(text=paste(chunk.name,'.snatch <<- SASnatch.S4',sep='')))
-   return()
+   #eval(parse(text=paste(chunk.name,'.snatch <<- SASnatch.S4',sep='')))
+   return(SASnatch.S4)
 }
