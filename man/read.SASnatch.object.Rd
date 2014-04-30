@@ -2,11 +2,13 @@
 \alias{read.SASnatch.object}
 \title{Create folder setup for SASnatch}
 \usage{
-read.SASnatch.object(chunk.name = "", SASresults.path = "",
+read.SASnatch.object(chunk.name = "", rawcode = "", SASresults.path = "",
   SAS2R.names = "", SAS2R.type = ".csv")
 }
 \arguments{
   \item{chunk.name}{character value, optional argument}
+
+  \item{rawcode}{character value, optional argument}
 
   \item{SASresults.path}{character value, optional
   argument}
