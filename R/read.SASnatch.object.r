@@ -28,7 +28,8 @@ read.SASnatch.object<- function(chunk.name='',SASresults.path='',SAS2R.names='',
    #results in a dataset (default to CSV)
    if(SAS2R.names[1] != '' & !is.null(SAS2R.names) & !is.na(SAS2R.names)){
       #output datasets stored in the SAScache folder
-      output.files.short <- files.cache[sapply(1:length(files.cache),function(j) sum(sapply(1:length(SAS2R.names),function(i) grepl(SAS2R.names[i],files.cache[j]))))  > 0]
+      n.output <- length(files.cache)
+      output.files.short <- files.cache[sapply(1:n.output, function(j) sum(sapply(1:length(SAS2R.names), function(i) grepl(SAS2R.names[i],files.cache[j]))))  > 0]
       output.files <- paste(SAScache.directory,output.files.short,sep='/')
       output.sets <- lapply(1:length(output.files), function(i) read.csv(file=output.files[i]))
       names(output.sets) <- SAS2R.names
