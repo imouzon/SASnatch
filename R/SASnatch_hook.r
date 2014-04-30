@@ -20,7 +20,7 @@ SASnatch_hook = function(before, options, envir){
 
       #get the code from the chunk
       if(!is.null(knitr:::opts_current$get('code'))){
-         code = paste(knitr:::opts_current$get('code'),sep = '\n')
+         code = paste(knitr:::opts_current$get('code'),collapse = '\n')
       }
 
       #determine which datasets go to SAS and which come from SAS 
