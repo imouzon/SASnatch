@@ -3,19 +3,21 @@
 #' @param SASnatch.working.directory character value, optional argument
 #' @export
 makeSAScache <- function(SASnatch.working.directory=''){
+   SASnatch.working.directory="~/Desktop/"
+   SASnatch.working.directory=""
    #Get the cache path in R
    if(SASnatch.working.directory != ''){
-      message.1 = 'SASnatch.working.directory not set in chunk'
-      message(message.1)
+      msg1 = 'SASnatch.working.directory not set in chunk'
+      message(msg1)
       SASnatch.R.cache.path = SASnatch.working.directory
    }else{
       if(!is.null(knitr:::opts_current$get('cache.path'))){
-         message.1 = 'Setting SASnatch.R.cache.path to knitr cache path'
-         message(message.1)
+         msg1 = 'Setting SASnatch.R.cache.path to knitr cache path'
+         message(msg1)
          SASnatch.R.cache.path = knitr:::opts_current$get('cache.path')
       }else{
-         message.1 = 'Setting SASnatch.R.cache.path to working directory'
-         message(message.1)
+         msg1 = 'Setting SASnatch.R.cache.path to working directory'
+         message(msg1)
          SASnatch.R.cache.path = file.path(getwd(),'cache')
       }
    }
@@ -62,8 +64,8 @@ makeSAScache <- function(SASnatch.working.directory=''){
 
    #check for the existence of the SAScache directory
    if(!file.exists(SASnatch.SAScache.path)){
-      message.3 = paste("Creating folder 'SAScache' in directory",SASnatch.R.cache.parent)
-      message(message.3)
+      msg3 = paste("Creating folder 'SAScache' in directory",SASnatch.R.cache.parent)
+      message(msg3)
       dir.create(file.path(SASnatch.SAScache.path))
    }
 

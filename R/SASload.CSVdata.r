@@ -2,7 +2,6 @@
 #'
 #' @param dsn character vector, optional argument
 #' @param SASnatch character vector, optional argument
-#' @export
 #' @examples
 #' SASload.CSVdata('d1, d2, d3')
 SASload.CSVdata <- function(dsn=''){

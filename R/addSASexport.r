@@ -4,7 +4,7 @@
 #' @param SAScache.directory character value, optional argument
 #' @param chunk.name character value, optional argument
 #' @export
-addSASexport = function(SAS2R = '', SAScache.directory='',chunk.name='unlabeled-SASnatch-chunk'){
+addSASexport = function(SAS2R = '',SAScache.directory='',chunk.name='unlabeled-SASnatch-chunk'){
    #make sure the SAScache directory exists
    if(SAScache.directory == ''){
       SAScache.directory = makeSAScache()
